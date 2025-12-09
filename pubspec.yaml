@@ -67,6 +67,7 @@ dev_dependencies:
   permission_handler: ^11.3.0
   intl: ^0.20.2
   intl_utils: ^2.8.2
+  equatable: ^2.0.5
   flutter_udid: ^4.1.0
 
 # For information on the generic Dart part of this file, see the
