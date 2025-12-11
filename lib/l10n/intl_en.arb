@@ -2,5 +2,15 @@
   "title_logo": "FinWise",
 
   "onboarding_title_01": "Welcome to Expense Manager",
-  "onboarding_title_02": "¿Are you ready to take control of your finances?"
+  "onboarding_title_02": "¿Are you ready to take control of your finances?",
+
+  "title_sign_in": "Welcome",
+  "sign_in_email": "Username or email",
+  "sign_in_email_hint": "example@example.com",
+  "sign_in_password": "Password",
+  "sign_in_password_hint": "********",
+  "sign_in_button": "Sign in",
+  "sign_in_forgot_password": "Forgot password?",
+  "sign_in_button_register": "Sign Up"
+
 }
