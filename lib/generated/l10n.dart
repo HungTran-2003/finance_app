@@ -18,8 +18,10 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
@@ -41,13 +43,40 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
+  }
+
+  /// `FinWise`
+  String get title_logo {
+    return Intl.message('FinWise', name: 'title_logo', desc: '', args: []);
+  }
+
+  /// `Welcome to Expense Manager`
+  String get onboarding_title_01 {
+    return Intl.message(
+      'Welcome to Expense Manager',
+      name: 'onboarding_title_01',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `¿Are you ready to take control of your finaces?`
+  String get onboarding_title_02 {
+    return Intl.message(
+      '¿Are you ready to take control of your finaces?',
+      name: 'onboarding_title_02',
+      desc: '',
+      args: [],
+    );
   }
 }
 
@@ -55,9 +84,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
-    return const <Locale>[
-      Locale.fromSubtags(languageCode: 'en'),
-    ];
+    return const <Locale>[Locale.fromSubtags(languageCode: 'en')];
   }
 
   @override

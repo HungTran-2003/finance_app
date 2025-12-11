@@ -7,5 +7,4 @@ part 'app_setting_state.dart';
 
 class AppSettingCubit extends Cubit<AppSettingState> {
   AppSettingCubit(super.initialState);
-
 }
