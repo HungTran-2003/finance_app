@@ -38,6 +38,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_in_password": MessageLookupByLibrary.simpleMessage("Password"),
         "sign_in_password_hint":
             MessageLookupByLibrary.simpleMessage("********"),
+        "sign_up_button": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "sign_up_button_login": MessageLookupByLibrary.simpleMessage("Login"),
+        "sign_up_confirm_password":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "sign_up_date_of_birth":
+            MessageLookupByLibrary.simpleMessage("Date of birth"),
+        "sign_up_date_of_birth_hint":
+            MessageLookupByLibrary.simpleMessage("DD/MM/YYYY"),
+        "sign_up_email": MessageLookupByLibrary.simpleMessage("Email"),
+        "sign_up_email_hint":
+            MessageLookupByLibrary.simpleMessage("example@example.com"),
+        "sign_up_have_account":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "sign_up_password": MessageLookupByLibrary.simpleMessage("Password"),
+        "sign_up_password_hint":
+            MessageLookupByLibrary.simpleMessage("********"),
+        "sign_up_phone": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "sign_up_phone_hint":
+            MessageLookupByLibrary.simpleMessage("+0123 456 789"),
+        "sign_up_terms_and_conditions": MessageLookupByLibrary.simpleMessage(
+            "By signing up, you agree to our Terms of Service and Privacy Policy."),
+        "sign_up_title": MessageLookupByLibrary.simpleMessage("Create Account"),
+        "sign_up_username": MessageLookupByLibrary.simpleMessage("Full name"),
+        "sign_up_username_hint":
+            MessageLookupByLibrary.simpleMessage("User name"),
         "title_logo": MessageLookupByLibrary.simpleMessage("FinWise"),
         "title_sign_in": MessageLookupByLibrary.simpleMessage("Welcome")
       };

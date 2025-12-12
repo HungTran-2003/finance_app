@@ -37,9 +37,17 @@ class SignInChildPage extends StatefulWidget {
 }
 
 class _SignInChildPageState extends State<SignInChildPage> {
+  late SignInCubit _cubit;
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    _cubit = BlocProvider.of<SignInCubit>(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +111,9 @@ class _SignInChildPageState extends State<SignInChildPage> {
           const SizedBox(height: 4.0,),
           AppTextButton(label: S.of(context).sign_in_forgot_password, onPressed: (){}, textStyle: AppTextStyles.blackGreenS14Medium,),
           const SizedBox(height: 4.0,),
-          AppButton(label: S.of(context).sign_in_button_register, onPressed: (){}, color: AppColors.secondary,)
+          AppButton(label: S.of(context).sign_in_button_register, onPressed: (){
+            _cubit.navigator.openSignUpPage();
+          }, color: AppColors.secondary,)
         ],
       ),
     );

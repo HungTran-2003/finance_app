@@ -8,7 +8,10 @@ class InputTextField extends StatelessWidget {
   final Color? hintColor;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final ValueChanged<String>? onChanged;
   final double? marginTitle;
+  final TextInputType? keyboardType;
+
 
   const InputTextField({
     super.key,
@@ -17,7 +20,9 @@ class InputTextField extends StatelessWidget {
     this.hintColor,
     required this.controller,
     this.validator,
+    this.onChanged,
     this.marginTitle = 0,
+    this.keyboardType,
   });
 
   @override
@@ -26,9 +31,12 @@ class InputTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 8,
       children: [
-        Text(
-          title,
-          style: AppTextStyles.blackGreenS15Medium,
+        Container(
+          margin: EdgeInsets.only(left: marginTitle!),
+          child: Text(
+            title,
+            style: AppTextStyles.blackGreenS15Medium,
+          ),
         ),
 
         TextFormField(
@@ -65,6 +73,8 @@ class InputTextField extends StatelessWidget {
             ),
           ),
           validator: validator,
+          onChanged: onChanged,
+          keyboardType: keyboardType,
         ),
       ],
     );

@@ -39,9 +39,12 @@ class _AppPasswordTextFieldState extends State<AppPasswordTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 8,
       children: [
-        Text(
-          widget.title,
-          style: AppTextStyles.blackGreenS15Medium,
+        Container(
+          margin: EdgeInsets.only(left: widget.marginTitle!),
+          child: Text(
+            widget.title,
+            style: AppTextStyles.blackGreenS15Medium,
+          ),
         ),
 
         TextFormField(

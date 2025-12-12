@@ -20,16 +20,21 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget _buildMaterialApp({required Locale locale}) {
-    return MaterialApp.router(
-      title: AppConfigs.appName,
-      routerConfig: AppRouter.router,
-      theme: AppThemes().theme,
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: MaterialApp.router(
+        title: AppConfigs.appName,
+        routerConfig: AppRouter.router,
+        theme: AppThemes().theme,
+        localizationsDelegates: [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+      ),
     );
   }
 }

@@ -11,6 +11,22 @@
   "sign_in_password_hint": "********",
   "sign_in_button": "Sign in",
   "sign_in_forgot_password": "Forgot password?",
-  "sign_in_button_register": "Sign Up"
+  "sign_in_button_register": "Sign Up",
 
+  "sign_up_title": "Create Account",
+  "sign_up_username": "Full name",
+  "sign_up_username_hint": "User name",
+  "sign_up_email": "Email",
+  "sign_up_email_hint": "example@example.com",
+  "sign_up_phone": "Phone number",
+  "sign_up_phone_hint": "+0123 456 789",
+  "sign_up_date_of_birth": "Date of birth",
+  "sign_up_date_of_birth_hint": "DD/MM/YYYY",
+  "sign_up_password": "Password",
+  "sign_up_confirm_password": "Confirm password",
+  "sign_up_password_hint": "********",
+  "sign_up_terms_and_conditions": "By signing up, you agree to our Terms of Service and Privacy Policy.",
+  "sign_up_button": "Sign Up",
+  "sign_up_have_account": "Already have an account?",
+  "sign_up_button_login": "Login"
 }

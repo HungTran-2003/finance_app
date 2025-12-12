@@ -159,6 +159,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Create Account`
+  String get sign_up_title {
+    return Intl.message(
+      'Create Account',
+      name: 'sign_up_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full name`
+  String get sign_up_username {
+    return Intl.message(
+      'Full name',
+      name: 'sign_up_username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User name`
+  String get sign_up_username_hint {
+    return Intl.message(
+      'User name',
+      name: 'sign_up_username_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get sign_up_email {
+    return Intl.message(
+      'Email',
+      name: 'sign_up_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `example@example.com`
+  String get sign_up_email_hint {
+    return Intl.message(
+      'example@example.com',
+      name: 'sign_up_email_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get sign_up_phone {
+    return Intl.message(
+      'Phone number',
+      name: 'sign_up_phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `+0123 456 789`
+  String get sign_up_phone_hint {
+    return Intl.message(
+      '+0123 456 789',
+      name: 'sign_up_phone_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of birth`
+  String get sign_up_date_of_birth {
+    return Intl.message(
+      'Date of birth',
+      name: 'sign_up_date_of_birth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DD/MM/YYYY`
+  String get sign_up_date_of_birth_hint {
+    return Intl.message(
+      'DD/MM/YYYY',
+      name: 'sign_up_date_of_birth_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get sign_up_password {
+    return Intl.message(
+      'Password',
+      name: 'sign_up_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password`
+  String get sign_up_confirm_password {
+    return Intl.message(
+      'Confirm password',
+      name: 'sign_up_confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `********`
+  String get sign_up_password_hint {
+    return Intl.message(
+      '********',
+      name: 'sign_up_password_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By signing up, you agree to our Terms of Service and Privacy Policy.`
+  String get sign_up_terms_and_conditions {
+    return Intl.message(
+      'By signing up, you agree to our Terms of Service and Privacy Policy.',
+      name: 'sign_up_terms_and_conditions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get sign_up_button {
+    return Intl.message(
+      'Sign Up',
+      name: 'sign_up_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account?`
+  String get sign_up_have_account {
+    return Intl.message(
+      'Already have an account?',
+      name: 'sign_up_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get sign_up_button_login {
+    return Intl.message(
+      'Login',
+      name: 'sign_up_button_login',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
