@@ -4,4 +4,5 @@ class AppDimens {
   static const cornerRadius = 60.0;
 
   static const marginNormal = 38.0;
+  static const marginLarge = 50.0;
 }

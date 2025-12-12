@@ -13,6 +13,13 @@ class AppTextStyles {
   ///BlackGreen
   static const blackGreen = TextStyle(color: AppColors.tBlackGreen);
 
+  //S14
+  static final blackGreenS14 = blackGreen.copyWith(fontSize: 14.0);
+  static final blackGreenS14Medium = blackGreenS14.copyWith(
+    fontWeight: FontWeight.w500,
+  );
+
+
   //S15
   static final blackGreenS15 = blackGreen.copyWith(fontSize: 15.0);
   static final blackGreenS15Medium = blackGreenS15.copyWith(
@@ -24,6 +31,12 @@ class AppTextStyles {
   static final blackGreenS16Medium = blackGreenS16.copyWith(
     fontWeight: FontWeight.w500,
   );
+  //S20
+  static final blackGreenS20 = blackGreen.copyWith(fontSize: 20.0);
+  static final blackGreenS20SemiBold = blackGreenS20.copyWith(
+    fontWeight: FontWeight.w600,
+  );
+
   //S30
   static final blackGreenS30 = blackGreen.copyWith(fontSize: 30.0);
   static final blackGreenS30SemiBold = blackGreenS30.copyWith(
