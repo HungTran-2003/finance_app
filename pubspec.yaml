@@ -51,9 +51,6 @@ dependencies:
   #Logger
   logger: ^2.0.2+1
 
-  #Notifications
-  flutter_local_notifications: ^17.0.0
-
   #Utilities
   permission_handler: ^11.3.0
   intl: ^0.20.2

@@ -13,10 +13,19 @@ class AppTextStyles {
   ///BlackGreen
   static const blackGreen = TextStyle(color: AppColors.tBlackGreen);
 
+  //S13
+  static final blackGreenS13 = blackGreen.copyWith(fontSize: 13.0);
+
   //S14
   static final blackGreenS14 = blackGreen.copyWith(fontSize: 14.0);
   static final blackGreenS14Medium = blackGreenS14.copyWith(
     fontWeight: FontWeight.w500,
+  );
+  static final blackGreenS14Regular = blackGreenS14.copyWith(
+    fontWeight: FontWeight.w400,
+  );
+  static final blackGreenS14SemiBold = blackGreenS14.copyWith(
+    fontWeight: FontWeight.w600,
   );
 
 
