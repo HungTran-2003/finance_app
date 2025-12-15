@@ -5,12 +5,15 @@ import 'package:finance_app/common/app_dimens.dart';
 import 'package:finance_app/common/app_svgs.dart';
 import 'package:finance_app/common/app_text_styles.dart';
 import 'package:finance_app/generated/l10n.dart';
+import 'package:finance_app/models/enum/load_status.dart';
+import 'package:finance_app/repositories/auth_repository.dart';
 import 'package:finance_app/ui/pages/auth/sign_in/sign_in_cubit.dart';
 import 'package:finance_app/ui/pages/auth/sign_in/sign_in_navigator.dart';
 import 'package:finance_app/ui/pages/auth/widgets/auth_page.dart';
 import 'package:finance_app/ui/widgets/app_buttons/app_button.dart';
 import 'package:finance_app/ui/widgets/app_buttons/app_icon_button.dart';
 import 'package:finance_app/ui/widgets/app_buttons/app_text_button.dart';
+import 'package:finance_app/ui/widgets/loading/app_loading_indicator.dart';
 import 'package:finance_app/ui/widgets/text_field/input_text_field.dart';
 import 'package:finance_app/ui/widgets/text_field/password_text_field.dart';
 import 'package:finance_app/ui/widgets/text_span/app_text_span.dart';
@@ -25,7 +28,8 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        return SignInCubit(navigator: SignInNavigator(context: context));
+        return SignInCubit(navigator: SignInNavigator(context: context),
+        authRepository: RepositoryProvider.of<AuthRepository>(context));
       },
       child: SignInChildPage(),
     );
@@ -54,9 +58,52 @@ class _SignInChildPageState extends State<SignInChildPage> {
 
   @override
   Widget build(BuildContext context) {
-    return AuthBasePage(
-      title: S.of(context).title_sign_in,
-      child: _buildBodyPage(),
+    return BlocListener<SignInCubit, SignInState>(
+      listenWhen: (previous, current) => previous.signInStatus != current.signInStatus,
+      listener: (context, state) {
+        if(state.signInStatus == LoadStatus.success) {
+          _cubit.navigator.openHomePage();
+        } else if (state.signInStatus == LoadStatus.failure){
+          _cubit.navigator.showSimpleDialog(title: "Error", content: "Error", onConfirm: (){
+            _cubit.resetState();
+          });
+        }
+      },
+      child: AuthBasePage(
+        title: S.of(context).title_sign_in,
+        child: _buildBodyStatePage(),
+      ),
+    );
+  }
+
+  Widget _buildBodyStatePage() {
+    return BlocBuilder<SignInCubit, SignInState>(
+      builder: (context, state) {
+        if (state.signInStatus == LoadStatus.loading) {
+          return Container(
+            color: AppColors.primary,
+            child: AppLoadingIndicator(label: "Sign In", state: state.signInStatus),
+          );
+        } else if (state.signInStatus == LoadStatus.success) {
+          return Container(
+            color: AppColors.primary,
+            child: AppLoadingIndicator(
+              label: "Sign In Success",
+              state: state.signInStatus,
+            ),
+          );
+        } else if(state.signInStatus == LoadStatus.failure){
+          return Container(
+            color: AppColors.primary,
+            child: AppLoadingIndicator(
+              label: "Sign In Fail",
+              state: state.signInStatus,
+            ),
+          );
+        } else {
+          return _buildBodyPage();
+        }
+      },
     );
   }
 
@@ -110,7 +157,7 @@ class _SignInChildPageState extends State<SignInChildPage> {
             label: S.of(context).sign_in_button,
             onPressed: () {
               if (_formKey.currentState!.validate()) {
-                log("Sign In");
+                _cubit.signIn(emailController.text, passwordController.text);
               }
             },
           ),

@@ -9,7 +9,7 @@ class AppConfigs {
   static const datePickerFormat = 'dd/MM/yyyy';
 
   ///Supabase
-  static const supabaseUrl = 'https://iidpgetlhglevrfcywiy.supabase.co';
+  static const supabaseUrl = 'https://hhobrzbrwfrhpgnkulwk.supabase.co';
   static final avatarBaseUrl = "$supabaseUrl/storage/v1/object/public/";
 
   static const defaultLanguage = Language.english;

@@ -7,6 +7,12 @@ class AppTextStyles {
   ///White
   static const white = TextStyle(color: AppColors.tWhite);
 
+  //S20
+  static final whiteS20 = white.copyWith(fontSize: 20.0);
+  static final whiteS20SemiBold = whiteS20.copyWith(fontWeight: FontWeight.w600);
+
+
+  //S52
   static final whiteS52 = white.copyWith(fontSize: 52.0);
   static final whiteS52Bold = whiteS52.copyWith(fontWeight: FontWeight.w600);
 

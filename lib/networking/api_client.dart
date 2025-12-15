@@ -14,4 +14,15 @@ class ApiClient {
       password: password,
     );
   }
+
+  Future<AuthResponse> signIn({
+    required String email,
+    required String password,
+  }) async {
+    return await _supabaseClient.auth.signInWithPassword(
+      email: email,
+      password: password,
+    );
+
+  }
 }

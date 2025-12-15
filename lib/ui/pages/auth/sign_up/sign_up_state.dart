@@ -1,27 +1,27 @@
 part of 'sign_up_cubit.dart';
 
 class SignUpState extends Equatable {
+  final LoadStatus status;
   final String? email;
   final String? password;
-  final String? confirmPassword;
 
   const SignUpState({
+    this.status = LoadStatus.initial,
     this.email,
     this.password,
-    this.confirmPassword,
   });
   @override
-  List<Object?> get props => [email, password, confirmPassword];
+  List<Object?> get props => [status, email, password];
 
   SignUpState copyWith({
+    LoadStatus? status,
     String? email,
     String? password,
-    String? confirmPassword,
   }) {
     return SignUpState(
+      status: status ?? this.status,
       email: email ?? this.email,
       password: password ?? this.password,
-      confirmPassword: confirmPassword ?? this.confirmPassword,
     );
   }
 }
