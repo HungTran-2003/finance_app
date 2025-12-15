@@ -10,6 +10,7 @@ import 'package:finance_app/ui/pages/auth/widgets/auth_page.dart';
 import 'package:finance_app/ui/widgets/app_buttons/app_button.dart';
 import 'package:finance_app/ui/widgets/text_field/input_text_field.dart';
 import 'package:finance_app/ui/widgets/text_field/password_text_field.dart';
+import 'package:finance_app/utils/app_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,54 +67,78 @@ class _SignUpChildPageState extends State<SignUpChildPage> {
         margin: const EdgeInsets.only(left: AppDimens.marginNormal, right: AppDimens.marginNormal, bottom: 50.0),
         child: Column(
           children: [
-            const SizedBox(height: 16.0),
-            InputTextField(
-              title: S.of(context).sign_up_username,
-              hintText: S.of(context).sign_up_username_hint,
-              controller: usernameController,
-              marginTitle: 16.0,
-            ),
-            const SizedBox(height: 16.0),
-            InputTextField(
-              title: S.of(context).sign_up_email,
-              hintText: S.of(context).sign_up_email_hint,
-              controller: emailController,
-              marginTitle: 16.0,
-            ),
-            const SizedBox(height: 16.0),
-            InputTextField(
-              title: S.of(context).sign_up_phone,
-              hintText: S.of(context).sign_up_phone,
-              controller: phoneController,
-              marginTitle: 16.0,
-              keyboardType: TextInputType.number,
-            ),
-            const SizedBox(height: 16.0),
-            InputTextField(
-              title: S.of(context).sign_up_date_of_birth,
-              hintText: S.of(context).sign_up_date_of_birth_hint,
-              controller: dateOfBirthController,
-              marginTitle: 16.0,
-            ),
-            const SizedBox(height: 16.0),
-            AppPasswordTextField(
-              title: S.of(context).sign_up_password,
-              hintText: S.of(context).sign_up_password_hint,
-              controller: usernameController,
-              marginTitle: 16.0,
-            ),
-            const SizedBox(height: 16.0),
-            AppPasswordTextField(
-              title: S.of(context).sign_up_password,
-              hintText: S.of(context).sign_up_password_hint,
-              controller: usernameController,
-              marginTitle: 16.0,
-            ),
-
+            _buildInputPage(),
             _buildFooterPage(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildInputPage() {
+    return Column(
+      children: [
+        const SizedBox(height: 16.0),
+        InputTextField(
+          title: S.of(context).sign_up_username,
+          hintText: S.of(context).sign_up_username_hint,
+          controller: usernameController,
+          marginTitle: 16.0,
+        ),
+        const SizedBox(height: 16.0),
+        InputTextField(
+          title: S.of(context).sign_up_email,
+          hintText: S.of(context).sign_up_email_hint,
+          controller: emailController,
+          marginTitle: 16.0,
+          keyboardType: TextInputType.emailAddress,
+          validator: (value) {
+            String? message = AppValidator.validateEmpty(value);
+            message ??= AppValidator.validateEmail(value!);
+            return message;
+          },
+        ),
+        const SizedBox(height: 16.0),
+        InputTextField(
+          title: S.of(context).sign_up_phone,
+          hintText: S.of(context).sign_up_phone,
+          controller: phoneController,
+          marginTitle: 16.0,
+          keyboardType: TextInputType.number,
+        ),
+        const SizedBox(height: 16.0),
+        InputTextField(
+          title: S.of(context).sign_up_date_of_birth,
+          hintText: S.of(context).sign_up_date_of_birth_hint,
+          controller: dateOfBirthController,
+          marginTitle: 16.0,
+        ),
+        const SizedBox(height: 16.0),
+        AppPasswordTextField(
+          title: S.of(context).sign_up_password,
+          hintText: S.of(context).sign_up_password_hint,
+          controller: passwordController,
+          marginTitle: 16.0,
+          validator: (value) {
+            String? message = AppValidator.validateEmpty(value);
+            message ??= AppValidator.validatePassword(value!);
+            return message;
+          }
+        ),
+        const SizedBox(height: 16.0),
+        AppPasswordTextField(
+          title: S.of(context).sign_up_password,
+          hintText: S.of(context).sign_up_password_hint,
+          controller: confirmPasswordController,
+          marginTitle: 16.0,
+          validator: (value) {
+            String? message = AppValidator.validateEmpty(value);
+            message ??= AppValidator.validatePassword(value!);
+            message ??= AppValidator.validateConfirmPassword(value, passwordController.text);
+            return message;
+          }
+        ),
+      ],
     );
   }
 

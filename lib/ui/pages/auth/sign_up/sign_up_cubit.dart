@@ -7,4 +7,6 @@ part 'sign_up_state.dart';
 class SignUpCubit extends Cubit<SignUpState>{
   final SignUpNavigator navigator;
   SignUpCubit({required this.navigator}) : super(const SignUpState());
+
+
 }
