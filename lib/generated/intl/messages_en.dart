@@ -22,12 +22,54 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "onboarding_title_01": MessageLookupByLibrary.simpleMessage(
-      "Welcome to Expense Manager",
-    ),
-    "onboarding_title_02": MessageLookupByLibrary.simpleMessage(
-      "¿Are you ready to take control of your finaces?",
-    ),
-    "title_logo": MessageLookupByLibrary.simpleMessage("FinWise"),
-  };
+        "onboarding_title_01":
+            MessageLookupByLibrary.simpleMessage("Welcome to Expense Manager"),
+        "onboarding_title_02": MessageLookupByLibrary.simpleMessage(
+            "¿Are you ready to take control of your finances?"),
+        "sign_in_button": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "sign_in_button_register":
+            MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "sign_in_email":
+            MessageLookupByLibrary.simpleMessage("Username or email"),
+        "sign_in_email_hint":
+            MessageLookupByLibrary.simpleMessage("example@example.com"),
+        "sign_in_forgot_password":
+            MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "sign_in_login_fingerprint":
+            MessageLookupByLibrary.simpleMessage("Use <Fingerprint> To Access"),
+        "sign_in_password": MessageLookupByLibrary.simpleMessage("Password"),
+        "sign_in_password_hint":
+            MessageLookupByLibrary.simpleMessage("********"),
+        "sign_in_text_fingerprint":
+            MessageLookupByLibrary.simpleMessage("Fingerprint"),
+        "sign_in_text_other_login":
+            MessageLookupByLibrary.simpleMessage("or sign up with"),
+        "sign_up_button": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "sign_up_button_login": MessageLookupByLibrary.simpleMessage("Login"),
+        "sign_up_confirm_password":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "sign_up_date_of_birth":
+            MessageLookupByLibrary.simpleMessage("Date of birth"),
+        "sign_up_date_of_birth_hint":
+            MessageLookupByLibrary.simpleMessage("DD/MM/YYYY"),
+        "sign_up_email": MessageLookupByLibrary.simpleMessage("Email"),
+        "sign_up_email_hint":
+            MessageLookupByLibrary.simpleMessage("example@example.com"),
+        "sign_up_have_account":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "sign_up_password": MessageLookupByLibrary.simpleMessage("Password"),
+        "sign_up_password_hint":
+            MessageLookupByLibrary.simpleMessage("********"),
+        "sign_up_phone": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "sign_up_phone_hint":
+            MessageLookupByLibrary.simpleMessage("+0123 456 789"),
+        "sign_up_terms_and_conditions": MessageLookupByLibrary.simpleMessage(
+            "By signing up, you agree to our Terms of Service and Privacy Policy."),
+        "sign_up_title": MessageLookupByLibrary.simpleMessage("Create Account"),
+        "sign_up_username": MessageLookupByLibrary.simpleMessage("Full name"),
+        "sign_up_username_hint":
+            MessageLookupByLibrary.simpleMessage("User name"),
+        "title_logo": MessageLookupByLibrary.simpleMessage("FinWise"),
+        "title_sign_in": MessageLookupByLibrary.simpleMessage("Welcome")
+      };
 }

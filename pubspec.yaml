@@ -38,6 +38,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_dotenv: ^5.0.2
 
+  #Supabase
+  supabase_flutter: ^2.0.0
+
   #State management
   flutter_bloc: ^8.1.0
 
@@ -50,9 +53,6 @@ dependencies:
 
   #Logger
   logger: ^2.0.2+1
-
-  #Notifications
-  flutter_local_notifications: ^17.0.0
 
   #Utilities
   permission_handler: ^11.3.0
@@ -82,6 +82,7 @@ flutter:
   assets:
     - assets/vectors/
     - assets/images/
+    - .env
   
   fonts:
     - family: Poppins
