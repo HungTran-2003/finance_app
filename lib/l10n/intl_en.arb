@@ -12,6 +12,9 @@
   "sign_in_button": "Sign in",
   "sign_in_forgot_password": "Forgot password?",
   "sign_in_button_register": "Sign Up",
+  "sign_in_login_fingerprint": "Use <Fingerprint> To Access",
+  "sign_in_text_fingerprint": "Fingerprint",
+  "sign_in_text_other_login": "or sign up with",
 
   "sign_up_title": "Create Account",
   "sign_up_username": "Full name",

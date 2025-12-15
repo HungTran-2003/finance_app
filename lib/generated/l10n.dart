@@ -160,6 +160,36 @@ class S {
     );
   }
 
+  /// `Use <Fingerprint> To Access`
+  String get sign_in_login_fingerprint {
+    return Intl.message(
+      'Use <Fingerprint> To Access',
+      name: 'sign_in_login_fingerprint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fingerprint`
+  String get sign_in_text_fingerprint {
+    return Intl.message(
+      'Fingerprint',
+      name: 'sign_in_text_fingerprint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `or sign up with`
+  String get sign_in_text_other_login {
+    return Intl.message(
+      'or sign up with',
+      name: 'sign_in_text_other_login',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create Account`
   String get sign_up_title {
     return Intl.message(

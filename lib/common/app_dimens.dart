@@ -5,4 +5,6 @@ class AppDimens {
 
   static const marginNormal = 38.0;
   static const marginLarge = 50.0;
+
+  static const btCornerRadius = 26.0;
 }

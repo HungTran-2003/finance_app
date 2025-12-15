@@ -35,9 +35,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("example@example.com"),
         "sign_in_forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "sign_in_login_fingerprint":
+            MessageLookupByLibrary.simpleMessage("Use <Fingerprint> To Access"),
         "sign_in_password": MessageLookupByLibrary.simpleMessage("Password"),
         "sign_in_password_hint":
             MessageLookupByLibrary.simpleMessage("********"),
+        "sign_in_text_fingerprint":
+            MessageLookupByLibrary.simpleMessage("Fingerprint"),
+        "sign_in_text_other_login":
+            MessageLookupByLibrary.simpleMessage("or sign up with"),
         "sign_up_button": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "sign_up_button_login": MessageLookupByLibrary.simpleMessage("Login"),
         "sign_up_confirm_password":
