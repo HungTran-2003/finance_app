@@ -349,6 +349,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Hi, {title}`
+  String home_title_welcome(Object title) {
+    return Intl.message(
+      'Hi, $title',
+      name: 'home_title_welcome',
+      desc: '',
+      args: [title],
+    );
+  }
+
+  /// `Good Morning`
+  String get home_getting_morning {
+    return Intl.message(
+      'Good Morning',
+      name: 'home_getting_morning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Afternoon`
+  String get home_getting_afternoon {
+    return Intl.message(
+      'Good Afternoon',
+      name: 'home_getting_afternoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Evening`
+  String get home_getting_evening {
+    return Intl.message(
+      'Good Evening',
+      name: 'home_getting_evening',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Balance`
+  String get home_total_balance {
+    return Intl.message(
+      'Total Balance',
+      name: 'home_total_balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Expense`
+  String get home_total_expense {
+    return Intl.message(
+      'Total Expense',
+      name: 'home_total_expense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `${value}`
+  String home_budget_income(Object value) {
+    return Intl.message(
+      '\$$value',
+      name: 'home_budget_income',
+      desc: '',
+      args: [value],
+    );
+  }
+
+  /// `-${value}`
+  String home_budget_expense(Object value) {
+    return Intl.message(
+      '-\$$value',
+      name: 'home_budget_expense',
+      desc: '',
+      args: [value],
+    );
+  }
+
+  /// `{percent} of your expenses, looks good.`
+  String home_message_good(Object percent) {
+    return Intl.message(
+      '$percent of your expenses, looks good.',
+      name: 'home_message_good',
+      desc: '',
+      args: [percent],
+    );
+  }
+
+  /// `{percent} of your expenses, looks bad.`
+  String home_message_bad(Object percent) {
+    return Intl.message(
+      '$percent of your expenses, looks bad.',
+      name: 'home_message_bad',
+      desc: '',
+      args: [percent],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -53,10 +53,6 @@ class _MainChildPageState extends State<MainChildPage> {
     return PageView(
       controller: pageController,
       physics: const NeverScrollableScrollPhysics(),
-      // onPageChanged: (index) {
-      //   _cubit.switchTap(index);
-      //   log("page$index");
-      // },
       children: pageList,
     );
   }
@@ -77,29 +73,33 @@ class _MainChildPageState extends State<MainChildPage> {
       builder: (context, state) {
         return Container(
           height: 108.0,
-          decoration: BoxDecoration(
-            color: AppColors.secondary,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(70.0),
-              topRight: Radius.circular(70.0),
+          color: AppColors.background,
+          child: Container(
+            height: 108.0,
+            decoration: BoxDecoration(
+              color: AppColors.secondary,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(70.0),
+                topRight: Radius.circular(70.0),
+              ),
             ),
-          ),
-          child: Row(
-            spacing: 8,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(MainTab.values.length, (index) {
-              return InkWell(
-                onTap: () {
-                 _cubit.switchTap(index);
-                 log("tap$index");
-                },
-                borderRadius: BorderRadius.circular(22),
-                child: TabIcons(
-                  asset: MainTab.values[index].asset,
-                  isSelected: state.selectedIndex == index,
-                ),
-              );
-            }),
+            child: Row(
+              spacing: 8,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(MainTab.values.length, (index) {
+                return InkWell(
+                  onTap: () {
+                   _cubit.switchTap(index);
+                   log("tap$index");
+                  },
+                  borderRadius: BorderRadius.circular(22),
+                  child: TabIcons(
+                    asset: MainTab.values[index].asset,
+                    isSelected: state.selectedIndex == index,
+                  ),
+                );
+              }),
+            ),
           ),
         );
       },

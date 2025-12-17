@@ -9,4 +9,8 @@ class AppSVGs {
   static const transaction = "assets/vectors/icon_transaction.svg";
   static const profile = "assets/vectors/icon_profile.svg";
 
+  static const notification = "assets/vectors/icon_notification.svg";
+  static const income = "assets/vectors/icon_income.svg";
+  static const expense = "assets/vectors/icon_expense.svg";
+
 }

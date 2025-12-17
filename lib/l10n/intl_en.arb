@@ -31,5 +31,16 @@
   "sign_up_terms_and_conditions": "By signing up, you agree to our Terms of Service and Privacy Policy.",
   "sign_up_button": "Sign Up",
   "sign_up_have_account": "Already have an account?",
-  "sign_up_button_login": "Login"
+  "sign_up_button_login": "Login",
+
+  "home_title_welcome": "Hi, {title}",
+  "home_getting_morning": "Good Morning",
+  "home_getting_afternoon": "Good Afternoon",
+  "home_getting_evening": "Good Evening",
+  "home_total_balance": "Total Balance",
+  "home_total_expense": "Total Expense",
+  "home_budget_income": "${value}",
+  "home_budget_expense": "-${value}",
+  "home_message_good": "{percent} of your expenses, looks good.",
+  "home_message_bad": "{percent} of your expenses, looks bad."
 }

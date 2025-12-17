@@ -20,8 +20,33 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(value) => "-\$${value}";
+
+  static String m1(value) => "\$${value}";
+
+  static String m2(percent) => "${percent} of your expenses, looks bad.";
+
+  static String m3(percent) => "${percent} of your expenses, looks good.";
+
+  static String m4(title) => "Hi, ${title}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "home_budget_expense": m0,
+        "home_budget_income": m1,
+        "home_getting_afternoon":
+            MessageLookupByLibrary.simpleMessage("Good Afternoon"),
+        "home_getting_evening":
+            MessageLookupByLibrary.simpleMessage("Good Evening"),
+        "home_getting_morning":
+            MessageLookupByLibrary.simpleMessage("Good Morning"),
+        "home_message_bad": m2,
+        "home_message_good": m3,
+        "home_title_welcome": m4,
+        "home_total_balance":
+            MessageLookupByLibrary.simpleMessage("Total Balance"),
+        "home_total_expense":
+            MessageLookupByLibrary.simpleMessage("Total Expense"),
         "onboarding_title_01":
             MessageLookupByLibrary.simpleMessage("Welcome to Expense Manager"),
         "onboarding_title_02": MessageLookupByLibrary.simpleMessage(
