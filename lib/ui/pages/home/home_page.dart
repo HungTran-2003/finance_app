@@ -2,9 +2,11 @@ import 'dart:developer';
 
 import 'package:finance_app/common/app_colors.dart';
 import 'package:finance_app/common/app_dimens.dart';
+import 'package:finance_app/common/app_svgs.dart';
 import 'package:finance_app/ui/pages/home/home_cubit.dart';
 import 'package:finance_app/ui/pages/home/home_navigator.dart';
 import 'package:finance_app/ui/pages/home/widgets/finalcial_overview/financial_overview_card.dart';
+import 'package:finance_app/ui/pages/home/widgets/goal_card.dart';
 import 'package:finance_app/ui/pages/home/widgets/header_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -88,7 +90,20 @@ class _HomeChildPageState extends State<HomeChildPage> {
                 color: AppColors.background
               ),
               margin: const EdgeInsets.all(0),
-              child: Center(child: Text("heee")),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  GoalCard(),
+                  const SizedBox(height: 20,),
+                  GoalCard(
+                    topExpenseIconPath: AppSVGs.car,
+                    topExpenseName: "Car",
+                    topExpenseAmount: 1200,
+                    incomeLastWeek: 4000,
+                    targetProgress: 0.3,
+                  )
+                ],
+              ),
             ),
           )
         ],

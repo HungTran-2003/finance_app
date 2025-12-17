@@ -42,5 +42,7 @@
   "home_budget_income": "${value}",
   "home_budget_expense": "-${value}",
   "home_message_good": "{percent} of your expenses, looks good.",
-  "home_message_bad": "{percent} of your expenses, looks bad."
+  "home_message_bad": "{percent} of your expenses, looks bad.",
+  "home_message_goal": "Savings on goals",
+  "home_message_goal_add": "Add Goal"
 }

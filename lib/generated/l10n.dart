@@ -449,6 +449,26 @@ class S {
       args: [percent],
     );
   }
+
+  /// `Savings on goals`
+  String get home_message_goal {
+    return Intl.message(
+      'Savings on goals',
+      name: 'home_message_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Goal`
+  String get home_message_goal_add {
+    return Intl.message(
+      'Add Goal',
+      name: 'home_message_goal_add',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -41,6 +41,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_getting_morning":
             MessageLookupByLibrary.simpleMessage("Good Morning"),
         "home_message_bad": m2,
+        "home_message_goal":
+            MessageLookupByLibrary.simpleMessage("Savings on goals"),
+        "home_message_goal_add":
+            MessageLookupByLibrary.simpleMessage("Add Goal"),
         "home_message_good": m3,
         "home_title_welcome": m4,
         "home_total_balance":

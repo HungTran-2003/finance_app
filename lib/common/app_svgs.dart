@@ -13,4 +13,11 @@ class AppSVGs {
   static const income = "assets/vectors/icon_income.svg";
   static const expense = "assets/vectors/icon_expense.svg";
 
+  static const add = "assets/vectors/icon_add.svg";
+  static const car = "assets/vectors/icon_car.svg";
+  static const house = "assets/vectors/icon_house.svg";
+  static const weddingRing = "assets/vectors/icon_wedding_ring.svg";
+  static const food = "assets/vectors/icon_food.svg";
+  static const salary = "assets/vectors/icon_salary.svg";
+
 }
