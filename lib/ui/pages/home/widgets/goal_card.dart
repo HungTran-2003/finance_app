@@ -1,8 +1,13 @@
+import 'dart:developer';
+
 import 'package:finance_app/common/app_colors.dart';
 import 'package:finance_app/common/app_dimens.dart';
 import 'package:finance_app/common/app_svgs.dart';
+import 'package:finance_app/common/app_text_styles.dart';
 import 'package:finance_app/generated/l10n.dart';
+import 'package:finance_app/ui/widgets/app_buttons/app_icon_button.dart';
 import 'package:finance_app/ui/widgets/divider/app_divider.dart';
+import 'package:finance_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,7 +20,7 @@ class GoalCard extends StatelessWidget {
   const GoalCard({
     super.key,
     this.topExpenseIconPath = AppSVGs.add,
-    this.topExpenseName,
+    this.topExpenseName = "Empty",
     this.topExpenseAmount = 0,
     this.incomeLastWeek = 0,
     this.targetProgress = 0,
@@ -37,16 +42,39 @@ class GoalCard extends StatelessWidget {
 
       child: Padding(
         padding: const EdgeInsets.only(
-          left: 36,
-          right: 36,
+          left: 30,
           top: 22,
-          bottom: 22,
+          right: 20,
+          bottom: 20,
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildGoalWidget(context),
-            AppDividers.vertical
+            SizedBox(width: 70, child: _buildGoalWidget(context)),
+            const SizedBox(width: 16.0),
+            AppDividers(thickness: 2).vertical,
+            const SizedBox(width: 16.0),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildWeeklySummary(
+                    S.of(context).home_revenue_last_week,
+                    incomeLastWeek!,
+                    true,
+                    context,
+                  ),
+                  AppDividers(thickness: 2).horizontal,
+                  _buildWeeklySummary(
+                    S.of(context).home_top_expense_last_week(topExpenseName!),
+                    topExpenseAmount!,
+                    false,
+                    context,
+                    iconPath: topExpenseIconPath,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -89,11 +117,51 @@ class GoalCard extends StatelessWidget {
             valueColor: AlwaysStoppedAnimation<Color>(AppColors.tBlue),
           ),
         ),
-        SvgPicture.asset(
-          topExpenseIconPath!,
-          width: 24,
-          height: 24,
-          fit: BoxFit.cover,
+        AppIconButton(asset: topExpenseIconPath!, size: 24, onPressed: (){
+          log("jadad");
+        },)
+      ],
+    );
+  }
+
+  Widget _buildWeeklySummary(
+    String title,
+    double value,
+    bool isIncome,
+    BuildContext context, {
+    String? iconPath = AppSVGs.salary,
+  }) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 24.0,
+          child: SvgPicture.asset(
+            iconPath!,
+            width: 24,
+            height: 24,
+            fit: BoxFit.fitWidth,
+          ),
+        ),
+        const SizedBox(width: 4.0),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(title, style: AppTextStyles.blackGreenS12Regular),
+            Text(
+              isIncome
+                  ? S
+                        .of(context)
+                        .home_budget_income(Utils().formatCurrencyEN(value))
+                  : S
+                        .of(context)
+                        .home_budget_expense(Utils().formatCurrencyEN(value)),
+              style: isIncome
+                  ? AppTextStyles.blackGreenS15Bold
+                  : AppTextStyles.blackGreenS15Bold.copyWith(
+                      color: AppColors.tBlue,
+                    ),
+            ),
+          ],
         ),
       ],
     );

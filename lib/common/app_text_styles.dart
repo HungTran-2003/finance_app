@@ -56,6 +56,9 @@ class AppTextStyles {
   static final blackGreenS15Medium = blackGreenS15.copyWith(
     fontWeight: FontWeight.w500,
   );
+  static final blackGreenS15Bold = blackGreenS15.copyWith(
+    fontWeight: FontWeight.w700,
+  );
 
   //S16
   static final blackGreenS16 = blackGreen.copyWith(fontSize: 16.0);

@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(title) => "Hi, ${title}";
 
+  static String m5(Food) => "${Food} Last Week";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "home_budget_expense": m0,
@@ -46,7 +48,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_message_goal_add":
             MessageLookupByLibrary.simpleMessage("Add Goal"),
         "home_message_good": m3,
+        "home_revenue_last_week":
+            MessageLookupByLibrary.simpleMessage("Revenue Last Week"),
         "home_title_welcome": m4,
+        "home_top_expense_last_week": m5,
         "home_total_balance":
             MessageLookupByLibrary.simpleMessage("Total Balance"),
         "home_total_expense":

@@ -37,7 +37,7 @@ class FinancialOverviewCard extends StatelessWidget {
                 context,
                 value: totalBalance,
               ),
-              AppDividers.vertical,
+              AppDividers().vertical,
               _buildTitleFinancial(
                 S.of(context).home_total_expense,
                 context,

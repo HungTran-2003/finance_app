@@ -469,6 +469,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Revenue Last Week`
+  String get home_revenue_last_week {
+    return Intl.message(
+      'Revenue Last Week',
+      name: 'home_revenue_last_week',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{Food} Last Week`
+  String home_top_expense_last_week(Object Food) {
+    return Intl.message(
+      '$Food Last Week',
+      name: 'home_top_expense_last_week',
+      desc: '',
+      args: [Food],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
