@@ -9,6 +9,7 @@ class AppColors {
   static const Color background = Color(0xFFF1FFF3);
   static const Color error = Color(0xFFFF0000);
   static const Color processBar = Color(0xFF052224);
+  static const Color oceanBlue = Color(0xFF0068FF);
 
 
 
@@ -23,4 +24,7 @@ class AppColors {
 
   ///Divider
   static const Color divider = Color(0xFFDFF7E2);
+
+  //Button
+  static const Color btLightBlue = Color(0xFF6DB6FE);
 }

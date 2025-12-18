@@ -34,6 +34,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "category_entertainment":
+            MessageLookupByLibrary.simpleMessage("Entertainment"),
+        "category_food": MessageLookupByLibrary.simpleMessage("Food"),
+        "category_gift": MessageLookupByLibrary.simpleMessage("Gift"),
+        "category_grocery": MessageLookupByLibrary.simpleMessage("Grocery"),
+        "category_medicine": MessageLookupByLibrary.simpleMessage("Medicine"),
+        "category_more": MessageLookupByLibrary.simpleMessage("More"),
+        "category_rent": MessageLookupByLibrary.simpleMessage("Rent"),
+        "category_saving": MessageLookupByLibrary.simpleMessage("Saving"),
+        "category_transport": MessageLookupByLibrary.simpleMessage("Transport"),
+        "empty_transaction":
+            MessageLookupByLibrary.simpleMessage("No transaction yet"),
         "home_budget_expense": m0,
         "home_budget_income": m1,
         "home_getting_afternoon":

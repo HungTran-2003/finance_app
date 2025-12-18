@@ -17,7 +17,19 @@ class AppSVGs {
   static const car = "assets/vectors/icon_car.svg";
   static const house = "assets/vectors/icon_house.svg";
   static const weddingRing = "assets/vectors/icon_wedding_ring.svg";
-  static const food = "assets/vectors/icon_food.svg";
   static const salary = "assets/vectors/icon_salary.svg";
+
+  ///categories
+  static const food = "assets/vectors/icon_food.svg";
+  static const rent = "assets/vectors/icon_rent.svg";
+  static const transport = "assets/vectors/icon_transport.svg";
+  static const grocery = "assets/vectors/icon_grocery.svg";
+  static const gift = "assets/vectors/icon_gift.svg";
+  static const medicine = "assets/vectors/icon_medicine.svg";
+  static const entertainment = "assets/vectors/icon_entertainment.svg";
+  static const saving = "assets/vectors/icon_saving.svg";
+
+  ///Empty list
+  static const wallet = "assets/vectors/icon_wallet.svg";
 
 }

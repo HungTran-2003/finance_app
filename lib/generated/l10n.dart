@@ -489,6 +489,106 @@ class S {
       args: [Food],
     );
   }
+
+  /// `Food`
+  String get category_food {
+    return Intl.message(
+      'Food',
+      name: 'category_food',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rent`
+  String get category_rent {
+    return Intl.message(
+      'Rent',
+      name: 'category_rent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transport`
+  String get category_transport {
+    return Intl.message(
+      'Transport',
+      name: 'category_transport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grocery`
+  String get category_grocery {
+    return Intl.message(
+      'Grocery',
+      name: 'category_grocery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gift`
+  String get category_gift {
+    return Intl.message(
+      'Gift',
+      name: 'category_gift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medicine`
+  String get category_medicine {
+    return Intl.message(
+      'Medicine',
+      name: 'category_medicine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entertainment`
+  String get category_entertainment {
+    return Intl.message(
+      'Entertainment',
+      name: 'category_entertainment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saving`
+  String get category_saving {
+    return Intl.message(
+      'Saving',
+      name: 'category_saving',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More`
+  String get category_more {
+    return Intl.message(
+      'More',
+      name: 'category_more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No transaction yet`
+  String get empty_transaction {
+    return Intl.message(
+      'No transaction yet',
+      name: 'empty_transaction',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

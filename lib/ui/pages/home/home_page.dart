@@ -3,11 +3,18 @@ import 'dart:developer';
 import 'package:finance_app/common/app_colors.dart';
 import 'package:finance_app/common/app_dimens.dart';
 import 'package:finance_app/common/app_svgs.dart';
+import 'package:finance_app/models/entities/transaction.dart';
+import 'package:finance_app/models/enum/categories.dart';
+import 'package:finance_app/models/enum/load_status.dart';
 import 'package:finance_app/ui/pages/home/home_cubit.dart';
 import 'package:finance_app/ui/pages/home/home_navigator.dart';
 import 'package:finance_app/ui/pages/home/widgets/finalcial_overview/financial_overview_card.dart';
 import 'package:finance_app/ui/pages/home/widgets/goal_card.dart';
 import 'package:finance_app/ui/pages/home/widgets/header_page.dart';
+import 'package:finance_app/ui/widgets/item/item_transaction.dart';
+import 'package:finance_app/ui/widgets/list/list_empty_widget.dart';
+import 'package:finance_app/ui/widgets/list/list_loading_widget.dart';
+import 'package:finance_app/ui/widgets/menu/app_switch_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,6 +46,12 @@ class _HomeChildPageState extends State<HomeChildPage> {
   void initState() {
     _cubit = BlocProvider.of<HomeCubit>(context);
     super.initState();
+
+    setup();
+  }
+
+  void setup() {
+    _cubit.fetchInitDate();
   }
 
   @override
@@ -56,15 +69,15 @@ class _HomeChildPageState extends State<HomeChildPage> {
             child: Column(
               children: [
                 HeaderPage(
-                  userName: "Welcome Ngu Code",
+                  userName: "Ngu Code",
                   greeting: "Good Morning",
                   onPress: () {
                     _cubit.test();
                   },
                 ),
-      
-                const SizedBox(height: 40.0),
-      
+
+                const SizedBox(height: 24.0),
+
                 BlocSelector<HomeCubit, HomeState, double?>(
                   selector: (state) => state.testPro,
                   builder: (context, value) {
@@ -87,27 +100,78 @@ class _HomeChildPageState extends State<HomeChildPage> {
                   topLeft: Radius.circular(AppDimens.cornerRadius),
                   topRight: Radius.circular(AppDimens.cornerRadius),
                 ),
-                color: AppColors.background
+                color: AppColors.background,
               ),
               margin: const EdgeInsets.all(0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  GoalCard(),
-                  const SizedBox(height: 20,),
-                  GoalCard(
-                    topExpenseIconPath: AppSVGs.car,
-                    topExpenseName: "Car",
-                    topExpenseAmount: 1200,
-                    incomeLastWeek: 4000,
-                    targetProgress: 0.3,
-                  )
-                ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      GoalCard(
+                        topExpenseIconPath: AppSVGs.car,
+                        topExpenseName: "Car",
+                        topExpenseAmount: 1200,
+                        incomeLastWeek: 4000,
+                        targetProgress: 0.3,
+                      ),
+                      const SizedBox(height: 16.0),
+
+                      BlocSelector<HomeCubit, HomeState, int>(
+                        selector: (state) => state.page!,
+                        builder: (context, value) {
+                          return AppSwitchMenu(
+                            itemsName: ["Today", "Week", "Month"],
+                            currentIndex: value,
+                            itemPress: (index) {
+                              _cubit.changePage(index);
+                            },
+                          );
+                        },
+                      ),
+
+                      BlocSelector<HomeCubit, HomeState, LoadStatus>(
+                        selector: (state) => state.loadStatus,
+                        builder: (context, value) {
+                          switch (value) {
+                            case LoadStatus.initial:
+                              return Container();
+                            case LoadStatus.loading:
+                              return const ListLoadingWidget();
+                            default:
+                              if (_cubit.state.transactions.isEmpty) {
+                                return ListEmptyWidget();
+                              }
+                              return _buildListTransaction(
+                                _cubit.state.transactions,
+                              );
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
+    );
+  }
+
+  Widget _buildListTransaction(List<TransactionEntity> transactions) {
+
+    return Column(
+      children: List.generate(transactions.length, (index) {
+        return ItemTransaction(
+          category: transactions[index].category?? Categories.more,
+          date: transactions[index].createAt ?? DateTime.now(),
+          title: transactions[index].title ?? "",
+          amount: transactions[index].amount ?? 0.0,
+          isIncome: transactions[index].isIncome ?? false,
+        );
+      })
     );
   }
 }

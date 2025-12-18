@@ -11,7 +11,7 @@ import 'package:finance_app/ui/pages/auth/sign_up/sign_up_navigator.dart';
 import 'package:finance_app/ui/pages/auth/sign_up/widgets/terms_widget.dart';
 import 'package:finance_app/ui/pages/auth/widgets/auth_page.dart';
 import 'package:finance_app/ui/widgets/app_buttons/app_button.dart';
-import 'package:finance_app/ui/widgets/loading/app_loading_indicator.dart';
+import 'package:finance_app/ui/widgets/loading/app_loading_overlay.dart';
 import 'package:finance_app/ui/widgets/text_field/input_text_field.dart';
 import 'package:finance_app/ui/widgets/text_field/password_text_field.dart';
 import 'package:finance_app/utils/app_validator.dart';
@@ -87,12 +87,12 @@ class _SignUpChildPageState extends State<SignUpChildPage> {
         if (state.status == LoadStatus.loading) {
           return Container(
             color: AppColors.primary,
-            child: AppLoadingIndicator(label: "Sign Up", state: state.status),
+            child: AppLoadingOverPlay(label: "Sign Up", state: state.status),
           );
         } else if (state.status == LoadStatus.success) {
           return Container(
             color: AppColors.primary,
-            child: AppLoadingIndicator(
+            child: AppLoadingOverPlay(
               label: "Sign Up Success",
               state: state.status,
             ),
@@ -100,7 +100,7 @@ class _SignUpChildPageState extends State<SignUpChildPage> {
         } else if(state.status == LoadStatus.failure){
           return Container(
             color: AppColors.primary,
-            child: AppLoadingIndicator(
+            child: AppLoadingOverPlay(
               label: "Sign Up Fail",
               state: state.status,
             ),

@@ -30,11 +30,9 @@ class GoalCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        left: AppDimens.marginNormal,
-        right: AppDimens.marginNormal,
         top: 34.0,
       ),
-      height: 152.0,
+      height: 154.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30.0),
         color: AppColors.primary,
@@ -42,9 +40,9 @@ class GoalCard extends StatelessWidget {
 
       child: Padding(
         padding: const EdgeInsets.only(
-          left: 30,
+          left: 20,
           top: 22,
-          right: 20,
+          right: 16,
           bottom: 20,
         ),
         child: Row(
@@ -134,11 +132,11 @@ class GoalCard extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 24.0,
+          width: 28.0,
           child: SvgPicture.asset(
             iconPath!,
-            width: 24,
-            height: 24,
+            width: 28,
+            height: 28,
             fit: BoxFit.fitWidth,
           ),
         ),
