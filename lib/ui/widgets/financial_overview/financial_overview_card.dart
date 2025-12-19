@@ -2,8 +2,8 @@ import 'package:finance_app/common/app_colors.dart';
 import 'package:finance_app/common/app_svgs.dart';
 import 'package:finance_app/common/app_text_styles.dart';
 import 'package:finance_app/generated/l10n.dart';
-import 'package:finance_app/ui/pages/home/widgets/finalcial_overview/financial_process_bar.dart';
 import 'package:finance_app/ui/widgets/divider/app_divider.dart';
+import 'package:finance_app/ui/widgets/financial_overview/financial_process_bar.dart';
 import 'package:finance_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,6 +13,7 @@ class FinancialOverviewCard extends StatelessWidget {
   final double? totalExpense;
   final double? budgetLimit;
   final double? percentage;
+  final VoidCallback? onPress;
 
   const FinancialOverviewCard({
     super.key,
@@ -20,6 +21,7 @@ class FinancialOverviewCard extends StatelessWidget {
     this.totalExpense,
     this.budgetLimit,
     this.percentage,
+    this.onPress,
   });
 
   @override
@@ -60,36 +62,39 @@ class FinancialOverviewCard extends StatelessWidget {
     double? value = 0,
   }) {
     final isIncome = title == S.of(context).home_total_balance;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            SvgPicture.asset(
-              isIncome ? AppSVGs.income : AppSVGs.expense,
-              width: 12,
-              height: 12,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(width: 6.0),
-            Text(title, style: AppTextStyles.blackGreenS12Regular),
-          ],
-        ),
-        Text(
-          isIncome
-              ? S
-                    .of(context)
-                    .home_budget_income(Utils().formatCurrencyEN(value!))
-              : S
-                    .of(context)
-                    .home_budget_expense(Utils().formatCurrencyEN(value!)),
-          style: isIncome
-              ? AppTextStyles.whiteS24Bold
-              : AppTextStyles.whiteS24Bold.copyWith(color: AppColors.tBlue),
-        ),
+    return InkWell(
+      onTap: onPress,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              SvgPicture.asset(
+                isIncome ? AppSVGs.income : AppSVGs.expense,
+                width: 12,
+                height: 12,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(width: 6.0),
+              Text(title, style: AppTextStyles.blackGreenS12Regular),
+            ],
+          ),
+          Text(
+            isIncome
+                ? S
+                      .of(context)
+                      .home_budget_income(Utils().formatCurrencyEN(value!))
+                : S
+                      .of(context)
+                      .home_budget_expense(Utils().formatCurrencyEN(value!)),
+            style: isIncome
+                ? AppTextStyles.whiteS24Bold
+                : AppTextStyles.whiteS24Bold.copyWith(color: AppColors.tBlue),
+          ),
 
 
-      ],
+        ],
+      ),
     );
   }
 
