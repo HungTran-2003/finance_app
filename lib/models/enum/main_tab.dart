@@ -2,11 +2,9 @@ import 'package:finance_app/common/app_svgs.dart';
 import 'package:finance_app/ui/pages/analysis/analysis_page.dart';
 import 'package:finance_app/ui/pages/category/category_page.dart';
 import 'package:finance_app/ui/pages/home/home_page.dart';
-import 'package:finance_app/ui/pages/main/widgets/tab_icons.dart';
 import 'package:finance_app/ui/pages/profile/profile_page.dart';
 import 'package:finance_app/ui/pages/transactions/transaction_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 enum MainTab {
   home,

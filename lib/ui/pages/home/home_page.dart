@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:finance_app/common/app_colors.dart';
 import 'package:finance_app/common/app_dimens.dart';
@@ -6,6 +5,7 @@ import 'package:finance_app/common/app_svgs.dart';
 import 'package:finance_app/models/entities/transaction.dart';
 import 'package:finance_app/models/enum/categories.dart';
 import 'package:finance_app/models/enum/load_status.dart';
+import 'package:finance_app/models/enum/time.dart';
 import 'package:finance_app/ui/pages/home/home_cubit.dart';
 import 'package:finance_app/ui/pages/home/home_navigator.dart';
 import 'package:finance_app/ui/pages/home/widgets/finalcial_overview/financial_overview_card.dart';
@@ -51,7 +51,7 @@ class _HomeChildPageState extends State<HomeChildPage> {
   }
 
   void setup() {
-    _cubit.fetchInitDate();
+    _cubit.getTransactionsWithTime();
   }
 
   @override
@@ -104,7 +104,7 @@ class _HomeChildPageState extends State<HomeChildPage> {
               ),
               margin: const EdgeInsets.all(0),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                padding: const EdgeInsets.only(left: 24.0, right: 24, top: 24),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -122,7 +122,7 @@ class _HomeChildPageState extends State<HomeChildPage> {
                         selector: (state) => state.page!,
                         builder: (context, value) {
                           return AppSwitchMenu(
-                            itemsName: ["Today", "Week", "Month"],
+                            itemsName: TimeFrame.values.map((e) => e.title).toList(),
                             currentIndex: value,
                             itemPress: (index) {
                               _cubit.changePage(index);
@@ -130,6 +130,8 @@ class _HomeChildPageState extends State<HomeChildPage> {
                           );
                         },
                       ),
+
+                      const SizedBox(height: 16.0),
 
                       BlocSelector<HomeCubit, HomeState, LoadStatus>(
                         selector: (state) => state.loadStatus,
@@ -161,7 +163,6 @@ class _HomeChildPageState extends State<HomeChildPage> {
   }
 
   Widget _buildListTransaction(List<TransactionEntity> transactions) {
-
     return Column(
       children: List.generate(transactions.length, (index) {
         return ItemTransaction(

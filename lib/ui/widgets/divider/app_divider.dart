@@ -5,21 +5,24 @@ class AppDividers {
   final double? width;
   final double? height;
   final double? thickness;
+  final Color? color;
+
 
   const AppDividers({
     this.width = 1,
     this.height = 1,
     this.thickness = 1,
+    this.color = AppColors.divider,
   });
 
   Divider get horizontal => Divider(
-    color: AppColors.divider,
+    color: color,
     thickness: thickness,
     height: height,
   );
 
   VerticalDivider get vertical => VerticalDivider(
-    color: AppColors.divider,
+    color: color,
     thickness: thickness,
     width: width,
   );

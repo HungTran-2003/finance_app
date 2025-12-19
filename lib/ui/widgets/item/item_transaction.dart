@@ -1,5 +1,10 @@
 import 'package:finance_app/common/app_colors.dart';
+import 'package:finance_app/common/app_text_styles.dart';
+import 'package:finance_app/generated/l10n.dart';
 import 'package:finance_app/models/enum/categories.dart';
+import 'package:finance_app/ui/widgets/divider/app_divider.dart';
+import 'package:finance_app/utils/app_date_utils.dart';
+import 'package:finance_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -35,18 +40,18 @@ class _ItemTransactionState extends State<ItemTransaction> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTapDown: (_){
+      onTapDown: (_) {
         setState(() {
           _isPressed = true;
         });
       },
-      onTapUp: (_){
+      onTapUp: (_) {
         setState(() {
           _isPressed = false;
         });
         widget.onPress;
       },
-      onTapCancel: (){
+      onTapCancel: () {
         setState(() {
           _isPressed = false;
         });
@@ -56,8 +61,9 @@ class _ItemTransactionState extends State<ItemTransaction> {
   }
 
   Widget _buildItemTransaction() {
-    return SizedBox(
+    return Container(
       height: 54.0,
+      margin: const EdgeInsets.only(bottom: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -76,7 +82,61 @@ class _ItemTransactionState extends State<ItemTransaction> {
                 fit: BoxFit.cover,
               ),
             ),
-          )
+          ),
+
+          _buildTitle(),
+
+          AppDividers(color: AppColors.primary).vertical,
+
+          SizedBox(
+            width: 70,
+            child: Center(
+              child: Text(
+                widget.title,
+                style: AppTextStyles.blackGreenS13Regular,
+                maxLines: 1, overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
+          AppDividers(color: AppColors.primary).vertical,
+
+          SizedBox(
+            width: 70.0,
+            child: Text(
+              widget.isIncome
+                  ? S
+                        .of(context)
+                        .home_budget_income(
+                          Utils().formatCurrencyEN(widget.amount),
+                        )
+                  : S
+                        .of(context)
+                        .home_budget_expense(
+                          Utils().formatCurrencyEN(widget.amount),
+                        ),
+              style: widget.isIncome
+                  ? AppTextStyles.blackGreenS15Medium
+                  : AppTextStyles.blackGreenS15Medium.copyWith(color: AppColors.tBlue),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTitle() {
+    return SizedBox(
+      width: 90,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(widget.category.name, style: AppTextStyles.blackGreenS15Medium, maxLines: 1, overflow: TextOverflow.ellipsis,),
+          Text(
+            AppDateUtils.toDateString(widget.date),
+            style: AppTextStyles.s12SemiBold.copyWith(color: AppColors.tBlue),
+          ),
         ],
       ),
     );

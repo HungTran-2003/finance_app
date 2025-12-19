@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:finance_app/common/app_colors.dart';
 import 'package:finance_app/common/app_text_styles.dart';
 import 'package:finance_app/models/enum/load_status.dart';
 import 'package:flutter/material.dart';

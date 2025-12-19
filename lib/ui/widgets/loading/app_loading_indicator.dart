@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:finance_app/common/app_colors.dart';
-import 'package:finance_app/common/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class AppLoadingIndicator extends StatefulWidget {

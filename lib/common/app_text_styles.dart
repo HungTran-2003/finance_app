@@ -27,6 +27,9 @@ class AppTextStyles {
   static final blackGreenS12Regular = blackGreenS12.copyWith(
     fontWeight: FontWeight.w400,
   );
+  static final s12SemiBold = blackGreenS12.copyWith(
+    fontWeight: FontWeight.w600,
+  );
 
 
   //S13

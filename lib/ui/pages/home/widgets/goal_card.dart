@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:finance_app/common/app_colors.dart';
-import 'package:finance_app/common/app_dimens.dart';
 import 'package:finance_app/common/app_svgs.dart';
 import 'package:finance_app/common/app_text_styles.dart';
 import 'package:finance_app/generated/l10n.dart';
@@ -29,9 +28,6 @@ class GoalCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        top: 34.0,
-      ),
       height: 154.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30.0),
