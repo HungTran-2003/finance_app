@@ -13,7 +13,7 @@ import 'package:finance_app/ui/pages/auth/widgets/auth_page.dart';
 import 'package:finance_app/ui/widgets/app_buttons/app_button.dart';
 import 'package:finance_app/ui/widgets/app_buttons/app_icon_button.dart';
 import 'package:finance_app/ui/widgets/app_buttons/app_text_button.dart';
-import 'package:finance_app/ui/widgets/loading/app_loading_indicator.dart';
+import 'package:finance_app/ui/widgets/loading/app_loading_overlay.dart';
 import 'package:finance_app/ui/widgets/text_field/input_text_field.dart';
 import 'package:finance_app/ui/widgets/text_field/password_text_field.dart';
 import 'package:finance_app/ui/widgets/text_span/app_text_span.dart';
@@ -82,12 +82,12 @@ class _SignInChildPageState extends State<SignInChildPage> {
         if (state.signInStatus == LoadStatus.loading) {
           return Container(
             color: AppColors.primary,
-            child: AppLoadingIndicator(label: "Sign In", state: state.signInStatus),
+            child: AppLoadingOverPlay(label: "Sign In", state: state.signInStatus),
           );
         } else if (state.signInStatus == LoadStatus.success) {
           return Container(
             color: AppColors.primary,
-            child: AppLoadingIndicator(
+            child: AppLoadingOverPlay(
               label: "Sign In Success",
               state: state.signInStatus,
             ),
@@ -95,7 +95,7 @@ class _SignInChildPageState extends State<SignInChildPage> {
         } else if(state.signInStatus == LoadStatus.failure){
           return Container(
             color: AppColors.primary,
-            child: AppLoadingIndicator(
+            child: AppLoadingOverPlay(
               label: "Sign In Fail",
               state: state.signInStatus,
             ),

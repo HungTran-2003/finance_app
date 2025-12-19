@@ -349,6 +349,246 @@ class S {
       args: [],
     );
   }
+
+  /// `Hi, {title}`
+  String home_title_welcome(Object title) {
+    return Intl.message(
+      'Hi, $title',
+      name: 'home_title_welcome',
+      desc: '',
+      args: [title],
+    );
+  }
+
+  /// `Good Morning`
+  String get home_getting_morning {
+    return Intl.message(
+      'Good Morning',
+      name: 'home_getting_morning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Afternoon`
+  String get home_getting_afternoon {
+    return Intl.message(
+      'Good Afternoon',
+      name: 'home_getting_afternoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Evening`
+  String get home_getting_evening {
+    return Intl.message(
+      'Good Evening',
+      name: 'home_getting_evening',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Balance`
+  String get home_total_balance {
+    return Intl.message(
+      'Total Balance',
+      name: 'home_total_balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Expense`
+  String get home_total_expense {
+    return Intl.message(
+      'Total Expense',
+      name: 'home_total_expense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `${value}`
+  String home_budget_income(Object value) {
+    return Intl.message(
+      '\$$value',
+      name: 'home_budget_income',
+      desc: '',
+      args: [value],
+    );
+  }
+
+  /// `-${value}`
+  String home_budget_expense(Object value) {
+    return Intl.message(
+      '-\$$value',
+      name: 'home_budget_expense',
+      desc: '',
+      args: [value],
+    );
+  }
+
+  /// `{percent} of your expenses, looks good.`
+  String home_message_good(Object percent) {
+    return Intl.message(
+      '$percent of your expenses, looks good.',
+      name: 'home_message_good',
+      desc: '',
+      args: [percent],
+    );
+  }
+
+  /// `{percent} of your expenses, looks bad.`
+  String home_message_bad(Object percent) {
+    return Intl.message(
+      '$percent of your expenses, looks bad.',
+      name: 'home_message_bad',
+      desc: '',
+      args: [percent],
+    );
+  }
+
+  /// `Savings on goals`
+  String get home_message_goal {
+    return Intl.message(
+      'Savings on goals',
+      name: 'home_message_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Goal`
+  String get home_message_goal_add {
+    return Intl.message(
+      'Add Goal',
+      name: 'home_message_goal_add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Revenue Last Week`
+  String get home_revenue_last_week {
+    return Intl.message(
+      'Revenue Last Week',
+      name: 'home_revenue_last_week',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{food} Last Week`
+  String home_top_expense_last_week(Object food) {
+    return Intl.message(
+      '$food Last Week',
+      name: 'home_top_expense_last_week',
+      desc: '',
+      args: [food],
+    );
+  }
+
+  /// `Food`
+  String get category_food {
+    return Intl.message(
+      'Food',
+      name: 'category_food',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rent`
+  String get category_rent {
+    return Intl.message(
+      'Rent',
+      name: 'category_rent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transport`
+  String get category_transport {
+    return Intl.message(
+      'Transport',
+      name: 'category_transport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grocery`
+  String get category_grocery {
+    return Intl.message(
+      'Grocery',
+      name: 'category_grocery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gift`
+  String get category_gift {
+    return Intl.message(
+      'Gift',
+      name: 'category_gift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medicine`
+  String get category_medicine {
+    return Intl.message(
+      'Medicine',
+      name: 'category_medicine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entertainment`
+  String get category_entertainment {
+    return Intl.message(
+      'Entertainment',
+      name: 'category_entertainment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saving`
+  String get category_saving {
+    return Intl.message(
+      'Saving',
+      name: 'category_saving',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More`
+  String get category_more {
+    return Intl.message(
+      'More',
+      name: 'category_more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No transaction yet`
+  String get empty_transaction {
+    return Intl.message(
+      'No transaction yet',
+      name: 'empty_transaction',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
