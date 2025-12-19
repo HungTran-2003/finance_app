@@ -30,7 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(title) => "Hi, ${title}";
 
-  static String m5(Food) => "${Food} Last Week";
+  static String m5(food) => "${food} Last Week";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{

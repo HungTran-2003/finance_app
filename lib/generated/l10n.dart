@@ -480,13 +480,13 @@ class S {
     );
   }
 
-  /// `{Food} Last Week`
-  String home_top_expense_last_week(Object Food) {
+  /// `{food} Last Week`
+  String home_top_expense_last_week(Object food) {
     return Intl.message(
-      '$Food Last Week',
+      '$food Last Week',
       name: 'home_top_expense_last_week',
       desc: '',
-      args: [Food],
+      args: [food],
     );
   }
 

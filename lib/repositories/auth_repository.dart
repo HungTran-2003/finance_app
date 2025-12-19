@@ -23,7 +23,7 @@ class AuthRepositoryImpl extends AuthRepository {
   @override
   Future<void> signUp({required String email, required String password}) async {
     try {
-      final response = await _apiClient.signUp(
+      await _apiClient.signUp(
         email: email,
         password: password,
       );

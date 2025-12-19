@@ -31,7 +31,6 @@ class HomeCubit extends Cubit<HomeState> {
         result = TransactionEntity.mockData;
       }
       emit(state.copyWith(transactions: result, loadStatus: LoadStatus.success));
-      print("fetch success");
     } catch (e) {
       emit(state.copyWith(loadStatus: LoadStatus.failure));
     }

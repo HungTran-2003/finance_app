@@ -61,7 +61,6 @@ class AppSwitchMenu extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               itemPress(index);
-              print(index);
             } ,
             behavior: HitTestBehavior.opaque,
             child: Center(
