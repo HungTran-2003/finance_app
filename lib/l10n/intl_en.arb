@@ -58,5 +58,10 @@
   "category_saving": "Saving",
   "category_more": "More",
 
-  "empty_transaction": "No transaction yet"
+  "empty_transaction": "No transaction yet",
+
+  "label_income": "Income",
+  "label_expense": "Expense",
+
+  "account_balance_title": "Account Balance"
 }

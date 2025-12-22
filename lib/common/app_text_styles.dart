@@ -9,7 +9,9 @@ class AppTextStyles {
 
   //S20
   static final whiteS20 = white.copyWith(fontSize: 20.0);
-  static final whiteS20SemiBold = whiteS20.copyWith(fontWeight: FontWeight.w600);
+  static final whiteS20SemiBold = whiteS20.copyWith(
+    fontWeight: FontWeight.w600,
+  );
 
   //S24
   static final whiteS24 = white.copyWith(fontSize: 24.0);
@@ -31,7 +33,6 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
   );
 
-
   //S13
   static final blackGreenS13 = blackGreen.copyWith(fontSize: 13.0);
   static final blackGreenS13Medium = blackGreenS13.copyWith(
@@ -52,7 +53,6 @@ class AppTextStyles {
   static final blackGreenS14SemiBold = blackGreenS14.copyWith(
     fontWeight: FontWeight.w600,
   );
-
 
   //S15
   static final blackGreenS15 = blackGreen.copyWith(fontSize: 15.0);
@@ -78,5 +78,17 @@ class AppTextStyles {
   static final blackGreenS30 = blackGreen.copyWith(fontSize: 30.0);
   static final blackGreenS30SemiBold = blackGreenS30.copyWith(
     fontWeight: FontWeight.w600,
+  );
+
+  static const subTitle = TextStyle(
+    fontSize: 15.0,
+    fontWeight: FontWeight.w500,
+    color: AppColors.tBlackGreen,
+  );
+
+  static const title = TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w600,
+    color: AppColors.tBlackGreen,
   );
 }

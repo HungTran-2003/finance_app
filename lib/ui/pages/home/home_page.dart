@@ -85,6 +85,9 @@ class _HomeChildPageState extends State<HomeChildPage> {
                       totalExpense: 1187.40,
                       budgetLimit: 20000,
                       percentage: value,
+                      onPress: () {
+                        _cubit.navigator.openAccountBalancePage();
+                      },
                     );
                   },
                 ),

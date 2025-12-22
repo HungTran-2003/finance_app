@@ -13,6 +13,7 @@ class FinancialOverviewCard extends StatelessWidget {
   final double? totalExpense;
   final double? budgetLimit;
   final double? percentage;
+  final Widget? child;
   final VoidCallback? onPress;
 
   const FinancialOverviewCard({
@@ -21,6 +22,7 @@ class FinancialOverviewCard extends StatelessWidget {
     this.totalExpense,
     this.budgetLimit,
     this.percentage,
+    this.child = const SizedBox.shrink(),
     this.onPress,
   });
 
@@ -50,6 +52,7 @@ class FinancialOverviewCard extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         FinancialProcessBar(percentage: percentage, budgetLimit: budgetLimit),
+        child!,
         const SizedBox(height: 10.0),
         _buildMessage(context),
       ],
@@ -63,6 +66,7 @@ class FinancialOverviewCard extends StatelessWidget {
   }) {
     final isIncome = title == S.of(context).home_total_balance;
     return InkWell(
+
       onTap: onPress,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,10 +87,10 @@ class FinancialOverviewCard extends StatelessWidget {
             isIncome
                 ? S
                       .of(context)
-                      .home_budget_income(Utils().formatCurrencyEN(value!))
+                      .home_budget_income(Utils.formatCurrencyEN(value!))
                 : S
                       .of(context)
-                      .home_budget_expense(Utils().formatCurrencyEN(value!)),
+                      .home_budget_expense(Utils.formatCurrencyEN(value!)),
             style: isIncome
                 ? AppTextStyles.whiteS24Bold
                 : AppTextStyles.whiteS24Bold.copyWith(color: AppColors.tBlue),

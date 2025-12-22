@@ -7,4 +7,7 @@ class AppDimens {
   static const marginLarge = 50.0;
 
   static const btCornerRadius = 26.0;
+
+  static const appBarHeight = 56.0;
+
 }

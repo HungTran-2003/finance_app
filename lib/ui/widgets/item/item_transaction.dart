@@ -65,7 +65,6 @@ class _ItemTransactionState extends State<ItemTransaction> {
       height: 54.0,
       margin: const EdgeInsets.only(bottom: 8.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             width: 57.0,
@@ -83,40 +82,47 @@ class _ItemTransactionState extends State<ItemTransaction> {
               ),
             ),
           ),
+          const SizedBox(width: 8.0),
 
-          _buildTitle(),
-
+          Expanded(flex: 3, child: _buildTitle()),
+          const SizedBox(width: 8.0),
           AppDividers(color: AppColors.primary).vertical,
+          const SizedBox(width: 8.0),
 
-          SizedBox(
-            width: 70,
+          Expanded(
+            flex: 2,
             child: Center(
               child: Text(
                 widget.title,
                 style: AppTextStyles.blackGreenS13Regular,
-                maxLines: 1, overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ),
+          const SizedBox(width: 8.0),
           AppDividers(color: AppColors.primary).vertical,
+          const SizedBox(width: 8.0),
 
-          SizedBox(
-            width: 70.0,
+          Expanded(
+            flex: 2,
             child: Text(
               widget.isIncome
                   ? S
                         .of(context)
                         .home_budget_income(
-                          Utils().formatCurrencyEN(widget.amount),
+                          Utils.formatCurrencyEN(widget.amount),
                         )
                   : S
                         .of(context)
                         .home_budget_expense(
-                          Utils().formatCurrencyEN(widget.amount),
+                          Utils.formatCurrencyEN(widget.amount),
                         ),
               style: widget.isIncome
                   ? AppTextStyles.blackGreenS15Medium
-                  : AppTextStyles.blackGreenS15Medium.copyWith(color: AppColors.tBlue),
+                  : AppTextStyles.blackGreenS15Medium.copyWith(
+                      color: AppColors.tBlue,
+                    ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -132,7 +138,12 @@ class _ItemTransactionState extends State<ItemTransaction> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.category.name, style: AppTextStyles.blackGreenS15Medium, maxLines: 1, overflow: TextOverflow.ellipsis,),
+          Text(
+            widget.category.name,
+            style: AppTextStyles.blackGreenS15Medium,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
           Text(
             AppDateUtils.toDateString(widget.date),
             style: AppTextStyles.s12SemiBold.copyWith(color: AppColors.tBlue),
