@@ -145,10 +145,10 @@ class GoalCard extends StatelessWidget {
               isIncome
                   ? S
                         .of(context)
-                        .home_budget_income(Utils().formatCurrencyEN(value))
+                        .home_budget_income(Utils.formatCurrencyEN(value))
                   : S
                         .of(context)
-                        .home_budget_expense(Utils().formatCurrencyEN(value)),
+                        .home_budget_expense(Utils.formatCurrencyEN(value)),
               style: isIncome
                   ? AppTextStyles.blackGreenS15Bold
                   : AppTextStyles.blackGreenS15Bold.copyWith(

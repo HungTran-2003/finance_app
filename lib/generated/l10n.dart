@@ -589,6 +589,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Income`
+  String get label_income {
+    return Intl.message(
+      'Income',
+      name: 'label_income',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expense`
+  String get label_expense {
+    return Intl.message(
+      'Expense',
+      name: 'label_expense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account Balance`
+  String get account_balance_title {
+    return Intl.message(
+      'Account Balance',
+      name: 'account_balance_title',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

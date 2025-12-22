@@ -62,7 +62,7 @@ class FinancialProcessBar extends StatelessWidget {
                           S
                               .of(context)
                               .home_budget_income(
-                                Utils().formatCurrencyEN(budgetLimit!),
+                                Utils.formatCurrencyEN(budgetLimit!),
                               ),
                           false,
                         ),

@@ -1,3 +1,4 @@
+import 'package:finance_app/ui/pages/account_balance/account_balance_page.dart';
 import 'package:finance_app/ui/pages/app_start/onboarding/onboarding_page.dart';
 import 'package:finance_app/ui/pages/app_start/splash/splash_page.dart';
 import 'package:finance_app/ui/pages/auth/sign_in/sign_in_page.dart';
@@ -23,6 +24,7 @@ class AppRouter {
   static const String home = "/home";
   static const String signIn = "/sign_in";
   static const String signUp = "/sign_up";
+  static const String accountBalance = "/account_balance";
 
   static final _routes = <RouteBase>[
     GoRoute(
@@ -49,6 +51,11 @@ class AppRouter {
       name: home,
       path: home,
       builder: (context, state) => const MainPage(),
+    ),
+    GoRoute(
+      name: accountBalance,
+      path: accountBalance,
+      builder: (context, state) => const AccountBalancePage(),
     )
   ];
 }

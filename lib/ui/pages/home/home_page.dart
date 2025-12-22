@@ -1,4 +1,3 @@
-
 import 'package:finance_app/common/app_colors.dart';
 import 'package:finance_app/common/app_dimens.dart';
 import 'package:finance_app/common/app_svgs.dart';
@@ -8,9 +7,9 @@ import 'package:finance_app/models/enum/load_status.dart';
 import 'package:finance_app/models/enum/time.dart';
 import 'package:finance_app/ui/pages/home/home_cubit.dart';
 import 'package:finance_app/ui/pages/home/home_navigator.dart';
-import 'package:finance_app/ui/pages/home/widgets/finalcial_overview/financial_overview_card.dart';
 import 'package:finance_app/ui/pages/home/widgets/goal_card.dart';
 import 'package:finance_app/ui/pages/home/widgets/header_page.dart';
+import 'package:finance_app/ui/widgets/financial_overview/financial_overview_card.dart';
 import 'package:finance_app/ui/widgets/item/item_transaction.dart';
 import 'package:finance_app/ui/widgets/list/list_empty_widget.dart';
 import 'package:finance_app/ui/widgets/list/list_loading_widget.dart';
@@ -86,10 +85,14 @@ class _HomeChildPageState extends State<HomeChildPage> {
                       totalExpense: 1187.40,
                       budgetLimit: 20000,
                       percentage: value,
+                      onPress: () {
+                        _cubit.navigator.openAccountBalancePage();
+                      },
                     );
                   },
                 ),
                 const SizedBox(height: 32.0),
+
               ],
             ),
           ),
