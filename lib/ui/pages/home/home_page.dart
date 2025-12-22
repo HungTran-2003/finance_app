@@ -92,6 +92,7 @@ class _HomeChildPageState extends State<HomeChildPage> {
                   },
                 ),
                 const SizedBox(height: 32.0),
+
               ],
             ),
           ),

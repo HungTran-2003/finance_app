@@ -1,10 +1,15 @@
 import 'package:finance_app/common/app_colors.dart';
 import 'package:finance_app/common/app_dimens.dart';
 import 'package:finance_app/generated/l10n.dart';
+import 'package:finance_app/models/enum/categories.dart';
+import 'package:finance_app/models/enum/load_status.dart';
 import 'package:finance_app/ui/pages/account_balance/account_balance_cubit.dart';
 import 'package:finance_app/ui/pages/account_balance/account_balance_navigator.dart';
 import 'package:finance_app/ui/widgets/app_bar/app_bar.dart';
 import 'package:finance_app/ui/widgets/financial_overview/financial_overview_card.dart';
+import 'package:finance_app/ui/widgets/item/item_transaction.dart';
+import 'package:finance_app/ui/widgets/list/list_empty_widget.dart';
+import 'package:finance_app/ui/widgets/list/list_loading_widget.dart';
 import 'package:finance_app/ui/widgets/transaction_toggle/transaction_type_toggle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,11 +44,12 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
   final DraggableScrollableController _controller =
       DraggableScrollableController();
 
+  final GlobalKey _cardKey = GlobalKey();
+  double _initialSheetSize = 0.5;
+
   void _expandSheet() {
-    // Hàm này sẽ được gọi khi bấm "See all"
-    // animateTo: 1.0 nghĩa là trồi lên full màn hình (hoặc maxChildSize)
     _controller.animateTo(
-      0.9, // Chiều cao mong muốn (90% màn hình)
+      1,
       duration: Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
@@ -53,11 +59,36 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
   void initState() {
     super.initState();
     _cubit = context.read<AccountBalanceCubit>();
+    _setup();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _calculateInitialSheetSize();
+    });
+  }
+
+  void _calculateInitialSheetSize() {
+    final RenderBox? cardBox =
+        _cardKey.currentContext?.findRenderObject() as RenderBox?;
+    final screenHeight = MediaQuery.of(context).size.height;
+    if (cardBox != null) {
+      final cardHeight = cardBox.size.height;
+      final sheetHeight =
+          screenHeight - cardHeight - AppDimens.appBarHeight - 20;
+      final calculatedSize = sheetHeight / screenHeight;
+      setState(() {
+        _initialSheetSize = calculatedSize.clamp(0.4, 0.9);
+      });
+    }
+  }
+
+  void _setup(){
+    _cubit.fetchDate();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawerScrimColor: Colors.transparent,
       appBar: AppBarWidget(
         title: S.of(context).account_balance_title,
         isBack: true,
@@ -73,6 +104,7 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
           Column(
             children: [
               Container(
+                key: _cardKey,
                 margin: const EdgeInsets.symmetric(
                   horizontal: AppDimens.marginNormal,
                 ),
@@ -106,20 +138,21 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
                   ),
                 ),
               ),
+              const SizedBox(height: 32.0),
             ],
           ),
-          _buildListTransaction(),
+          _buildDraggableSheet(),
         ],
       ),
     );
   }
 
-  Widget _buildListTransaction() {
+  Widget _buildDraggableSheet() {
     return DraggableScrollableSheet(
       controller: _controller,
-      initialChildSize: 0.5,
-      minChildSize: 0.5,
-      maxChildSize: 0.8,
+      initialChildSize: _initialSheetSize,
+      minChildSize: _initialSheetSize,
+      maxChildSize: 1,
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
@@ -137,15 +170,10 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
                 children: [
                   Text(
                     "Transactions",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-
-                  // NÚT SEE ALL
                   GestureDetector(
-                    onTap: _expandSheet, // Gọi hàm mở rộng sheet
+                    onTap: _expandSheet,
                     child: Text(
                       "See all",
                       style: TextStyle(color: Colors.grey),
@@ -155,20 +183,43 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
               ),
               const SizedBox(height: 16.0),
               Expanded(
-                child: ListView.builder(
-                  controller: scrollController,
-                  itemCount: 20,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text("Transaction $index"),
-                      subtitle: Text("Description"),
-                      trailing: Text("-\$100.00"),
-                    );
-                  },
-                ),
+                child: _buildListTransaction(scrollController),
               ),
             ],
           ),
+        );
+      },
+    );
+  }
+
+  Widget _buildListTransaction(ScrollController scrollController) {
+    return BlocBuilder<AccountBalanceCubit, AccountBalanceState>(
+      buildWhen: (previous, current) {
+        return previous.loadStatus != current.loadStatus;
+      },
+      builder: (context, state) {
+        if (state.loadStatus == LoadStatus.loading) {
+          return const ListLoadingWidget();
+        } else if (state.loadStatus == LoadStatus.failure){
+          return const Text("Error");
+        } else if (state.transactions.isEmpty){
+          return const ListEmptyWidget();
+        } return ListView.separated(
+          controller: scrollController,
+          itemCount: state.transactions.length,
+          itemBuilder: (context, index) {
+            final transactions = state.transactions;
+            return ItemTransaction(
+              category: transactions[index].category?? Categories.more,
+              date: transactions[index].createAt ?? DateTime.now(),
+              title: transactions[index].title ?? "",
+              amount: transactions[index].amount ?? 0.0,
+              isIncome: transactions[index].isIncome ?? false,
+            );
+          },
+          separatorBuilder: (context, index) {
+            return const SizedBox(height: 8.0);
+          },
         );
       },
     );

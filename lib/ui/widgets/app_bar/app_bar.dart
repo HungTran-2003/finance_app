@@ -36,6 +36,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
           AppIconButton(asset: actionPath!, size: 24, onPressed: onPressAction, bgColor: AppColors.background,)
         ],
         backgroundColor: AppColors.primary,
+        scrolledUnderElevation: 0,
       ),
     );
   }
