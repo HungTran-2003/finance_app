@@ -45,7 +45,9 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
       DraggableScrollableController();
 
   final GlobalKey _cardKey = GlobalKey();
-  double _initialSheetSize = 0.5;
+
+  late double _screenHeight;
+  double _initialSheetSize = 0.0;
 
   void _expandSheet() {
     _controller.animateTo(
@@ -60,25 +62,9 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
     super.initState();
     _cubit = context.read<AccountBalanceCubit>();
     _setup();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _calculateInitialSheetSize();
+      _calculateInitialSheetSize(_screenHeight);
     });
-  }
-
-  void _calculateInitialSheetSize() {
-    final RenderBox? cardBox =
-        _cardKey.currentContext?.findRenderObject() as RenderBox?;
-    final screenHeight = MediaQuery.of(context).size.height;
-    if (cardBox != null) {
-      final cardHeight = cardBox.size.height;
-      final sheetHeight =
-          screenHeight - cardHeight - AppDimens.appBarHeight - 20;
-      final calculatedSize = sheetHeight / screenHeight;
-      setState(() {
-        _initialSheetSize = calculatedSize.clamp(0.4, 0.9);
-      });
-    }
   }
 
   void _setup(){
@@ -92,62 +78,79 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
       appBar: AppBarWidget(
         title: S.of(context).account_balance_title,
         isBack: true,
-        onPressBack: () {
-          _cubit.navigator.pop();
-        },
         onPressAction: () {
           print("Notification");
         },
       ),
-      body: Stack(
-        children: [
-          Column(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          _screenHeight = constraints.maxHeight;
+          return Stack(
             children: [
-              Container(
-                key: _cardKey,
-                margin: const EdgeInsets.symmetric(
-                  horizontal: AppDimens.marginNormal,
-                ),
-                child: FinancialOverviewCard(
-                  totalBalance: 7783,
-                  totalExpense: 1187.40,
-                  budgetLimit: 20000,
-                  percentage: 0.3,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 24.0),
-                      Row(
+              Column(
+                children: [
+                  Container(
+                    key: _cardKey,
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: AppDimens.marginNormal,
+                    ),
+                    child: FinancialOverviewCard(
+                      totalBalance: 7783,
+                      totalExpense: 1187.40,
+                      budgetLimit: 20000,
+                      percentage: 0.3,
+                      child: Column(
                         children: [
-                          Expanded(
-                            child: TransactionTypeToggle(
-                              label: S.of(context).label_income,
-                              value: 3000,
-                            ),
-                          ),
-                          const SizedBox(width: 16.0),
-                          Expanded(
-                            child: TransactionTypeToggle(
-                              label: S.of(context).label_expense,
-                              isIncome: false,
-                              value: 3000,
-                            ),
+                          const SizedBox(height: 24.0),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: TransactionTypeToggle(
+                                  label: S.of(context).label_income,
+                                  value: 3000,
+                                ),
+                              ),
+                              const SizedBox(width: 16.0),
+                              Expanded(
+                                child: TransactionTypeToggle(
+                                  label: S.of(context).label_expense,
+                                  isIncome: false,
+                                  value: 3000,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
-              const SizedBox(height: 32.0),
+              _buildDraggableSheet(),
             ],
-          ),
-          _buildDraggableSheet(),
-        ],
+          );
+        }
       ),
     );
   }
 
+  void _calculateInitialSheetSize(double screenHeight) {
+    final RenderBox? cardBox =
+    _cardKey.currentContext?.findRenderObject() as RenderBox?;
+    if (cardBox != null) {
+      final cardHeight = cardBox.size.height;
+      final sheetHeight =
+          screenHeight - cardHeight - 30;
+      final calculatedSize = sheetHeight / screenHeight;
+      print("calculatedSize: $calculatedSize");
+      setState(() {
+        _initialSheetSize = calculatedSize.clamp(0, 0.9);
+      });
+    }
+  }
+
   Widget _buildDraggableSheet() {
+
     return DraggableScrollableSheet(
       controller: _controller,
       initialChildSize: _initialSheetSize,
@@ -162,7 +165,7 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
             ),
             color: AppColors.background,
           ),
-          padding: const EdgeInsets.only(left: 24.0, right: 24, top: 24),
+          padding: EdgeInsets.only(left: 24.0, right: 24, top: 40),
           child: Column(
             children: [
               Row(

@@ -95,8 +95,6 @@ class FinancialOverviewCard extends StatelessWidget {
                 ? AppTextStyles.whiteS24Bold
                 : AppTextStyles.whiteS24Bold.copyWith(color: AppColors.tBlue),
           ),
-
-
         ],
       ),
     );

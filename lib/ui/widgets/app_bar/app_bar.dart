@@ -29,7 +29,9 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
         title: Text(title ?? "", style: AppTextStyles.title,),
         centerTitle: true,
         leading: isBack! ? IconButton(
-          onPressed: onPressBack,
+          onPressed: (){
+            Navigator.pop(context);
+          },
           icon: const Icon(Icons.arrow_back, size: 24, color: AppColors.background,),
         ) : null,
         actions: [
