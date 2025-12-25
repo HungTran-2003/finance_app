@@ -112,6 +112,7 @@ class _SignInChildPageState extends State<SignInChildPage> {
       margin: const EdgeInsets.symmetric(horizontal: AppDimens.marginNormal),
       child: Form(
         key: _formKey,
+        autovalidateMode: AutovalidateMode.onUnfocus,
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Column(

@@ -32,4 +32,7 @@ class AppSVGs {
   ///Empty list
   static const wallet = "assets/vectors/icon_wallet.svg";
 
+  ///Chart
+  static const search = "assets/vectors/icon_search.svg";
+  static const calendar = "assets/vectors/icon_calendar.svg";
 }

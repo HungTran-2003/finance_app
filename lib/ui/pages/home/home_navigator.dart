@@ -6,6 +6,9 @@ class HomeNavigator extends AppNavigator {
 
   Future<void> openAccountBalancePage() async{
     await pushName(AppRouter.accountBalance);
+  }
 
+  Future<void> openQuicklyAnalysis() async {
+    await pushName(AppRouter.quicklyAnalysis);
   }
 }

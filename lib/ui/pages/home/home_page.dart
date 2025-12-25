@@ -118,6 +118,9 @@ class _HomeChildPageState extends State<HomeChildPage> {
                         topExpenseAmount: 1200,
                         incomeLastWeek: 4000,
                         targetProgress: 0.3,
+                        onPress: () {
+                          _cubit.navigator.openQuicklyAnalysis();
+                        },
                       ),
                       const SizedBox(height: 16.0),
 

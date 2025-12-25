@@ -46,18 +46,18 @@ extension MainTabExtension on MainTab {
     }
   }
 
-  String get title {
+  String get name {
     switch (this) {
       case MainTab.home:
-        return 'Home';
+        return 'home';
       case MainTab.analysis:
-        return 'Analysis';
+        return 'analysis';
       case MainTab.transactions:
-        return 'Transactions';
+        return 'transactions';
       case MainTab.categories:
-        return 'Categories';
+        return 'categories';
       case MainTab.profile:
-        return 'Profile';
+        return 'profile';
     }
   }
 }

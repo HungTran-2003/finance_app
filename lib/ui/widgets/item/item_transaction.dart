@@ -39,24 +39,28 @@ class _ItemTransactionState extends State<ItemTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTapDown: (_) {
-        setState(() {
-          _isPressed = true;
-        });
-      },
-      onTapUp: (_) {
-        setState(() {
-          _isPressed = false;
-        });
-        widget.onPress;
-      },
-      onTapCancel: () {
-        setState(() {
-          _isPressed = false;
-        });
-      },
-      child: _buildItemTransaction(),
+    return Material(
+      borderRadius: BorderRadius.circular(22.0),
+      color: Colors.transparent,
+      child: InkWell(
+        onTapDown: (_) {
+          setState(() {
+            _isPressed = true;
+          });
+        },
+        onTapUp: (_) {
+          setState(() {
+            _isPressed = false;
+          });
+          widget.onPress;
+        },
+        onTapCancel: () {
+          setState(() {
+            _isPressed = false;
+          });
+        },
+        child: _buildItemTransaction(),
+      ),
     );
   }
 
@@ -64,6 +68,7 @@ class _ItemTransactionState extends State<ItemTransaction> {
     return Container(
       height: 54.0,
       margin: const EdgeInsets.only(bottom: 8.0),
+      color: Colors.transparent,
       child: Row(
         children: [
           Container(

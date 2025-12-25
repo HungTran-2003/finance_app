@@ -28,6 +28,10 @@ class AppNavigator {
     GoRouter.of(context).go(AppRouter.signIn);
   }
 
+  Future<void> goPage(String name) async {
+    GoRouter.of(context).go(name);
+  }
+
   Future<void> showSimpleDialog({
     required String title,
     required String content,

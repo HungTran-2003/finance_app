@@ -16,6 +16,8 @@ class GoalCard extends StatelessWidget {
   final double? topExpenseAmount;
   final double? incomeLastWeek;
   final double? targetProgress;
+  final VoidCallback? onPress;
+
   const GoalCard({
     super.key,
     this.topExpenseIconPath = AppSVGs.add,
@@ -23,6 +25,7 @@ class GoalCard extends StatelessWidget {
     this.topExpenseAmount = 0,
     this.incomeLastWeek = 0,
     this.targetProgress = 0,
+    this.onPress,
   });
 
   @override
@@ -111,9 +114,7 @@ class GoalCard extends StatelessWidget {
             valueColor: AlwaysStoppedAnimation<Color>(AppColors.tBlue),
           ),
         ),
-        AppIconButton(asset: topExpenseIconPath!, size: 24, onPressed: (){
-          log("jadad");
-        },)
+        AppIconButton(asset: topExpenseIconPath!, size: 24, onPressed: onPress,)
       ],
     );
   }

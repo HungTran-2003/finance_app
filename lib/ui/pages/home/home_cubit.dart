@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:finance_app/models/entities/transaction.dart';
 import 'package:finance_app/models/enum/load_status.dart';
@@ -32,6 +34,8 @@ class HomeCubit extends Cubit<HomeState> {
       }
       emit(state.copyWith(transactions: result, loadStatus: LoadStatus.success));
     } catch (e) {
+      if (isClosed) return;
+      log(e.toString());
       emit(state.copyWith(loadStatus: LoadStatus.failure));
     }
   }

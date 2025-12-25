@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+  final Widget child;
+  const MainPage({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +18,20 @@ class MainPage extends StatelessWidget {
       create: (context) {
         return MainCubit(navigator: MainNavigator(context: context));
       },
-      child: MainChildPage(),
+      child: MainChildPage(child: child),
     );
   }
 }
 
 class MainChildPage extends StatefulWidget {
-  const MainChildPage({super.key});
+  final Widget child;
+  const MainChildPage({super.key, required this.child});
 
   @override
   State<MainChildPage> createState() => _MainChildPageState();
 }
 
 class _MainChildPageState extends State<MainChildPage> {
-  final List<Widget> pageList = MainTab.values.map((e) => e.page).toList();
-  final PageController pageController = PageController();
-
   late MainCubit _cubit;
 
   @override
@@ -44,16 +43,8 @@ class _MainChildPageState extends State<MainChildPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buildBodyPage(),
+      body: widget.child,
       bottomNavigationBar: _buildBottomNavigationBar(),
-    );
-  }
-
-  Widget _buildBodyPage() {
-    return PageView(
-      controller: pageController,
-      physics: const NeverScrollableScrollPhysics(),
-      children: pageList,
     );
   }
 
@@ -65,7 +56,7 @@ class _MainChildPageState extends State<MainChildPage> {
       },
       listener: (context, state) {
         log("selectedIndex: ${state.selectedIndex}");
-        pageController.jumpToPage(state.selectedIndex);
+        _cubit.navigator.pushReplacementName(MainTab.values[state.selectedIndex].name);
       },
       buildWhen: (prev, current) {
         return prev.selectedIndex != current.selectedIndex;
