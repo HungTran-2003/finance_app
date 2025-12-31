@@ -156,6 +156,7 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
       initialChildSize: _initialSheetSize,
       minChildSize: _initialSheetSize,
       maxChildSize: 1,
+      shouldCloseOnMinExtent: true,
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
@@ -209,6 +210,7 @@ class _AccountBalanceChildPageState extends State<AccountBalanceChildPage> {
           return const ListEmptyWidget();
         } return ListView.separated(
           controller: scrollController,
+          physics: const ClampingScrollPhysics(),
           itemCount: state.transactions.length,
           itemBuilder: (context, index) {
             final transactions = state.transactions;

@@ -7,7 +7,7 @@ import 'package:finance_app/models/enum/load_status.dart';
 import 'package:finance_app/models/enum/time.dart';
 import 'package:finance_app/ui/pages/home/home_cubit.dart';
 import 'package:finance_app/ui/pages/home/home_navigator.dart';
-import 'package:finance_app/ui/pages/home/widgets/goal_card.dart';
+import 'package:finance_app/ui/widgets/card/goal_card.dart';
 import 'package:finance_app/ui/pages/home/widgets/header_page.dart';
 import 'package:finance_app/ui/widgets/financial_overview/financial_overview_card.dart';
 import 'package:finance_app/ui/widgets/item/item_transaction.dart';
@@ -109,6 +109,7 @@ class _HomeChildPageState extends State<HomeChildPage> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 24.0, right: 24, top: 24),
                 child: SingleChildScrollView(
+                  physics: const ClampingScrollPhysics(),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [

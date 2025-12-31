@@ -84,7 +84,9 @@ class AppRouter {
             GoRoute(
               name: quicklyAnalysis,
               path: quicklyAnalysis,
-              builder: (context, state) => const QuicklyAnalysisPage(),
+              builder: (context, state) => QuicklyAnalysisPage(
+                argument: state.extra as AnalysisArgument,
+              ),
             )
           ]
         ),

@@ -16,6 +16,7 @@ class GoalCard extends StatelessWidget {
   final double? topExpenseAmount;
   final double? incomeLastWeek;
   final double? targetProgress;
+  final String? iconTarget;
   final VoidCallback? onPress;
 
   const GoalCard({
@@ -25,6 +26,7 @@ class GoalCard extends StatelessWidget {
     this.topExpenseAmount = 0,
     this.incomeLastWeek = 0,
     this.targetProgress = 0,
+    this.iconTarget = AppSVGs.add,
     this.onPress,
   });
 
@@ -83,7 +85,7 @@ class GoalCard extends StatelessWidget {
       children: [
         _buildProgressWidget(),
         Text(
-          topExpenseIconPath! == AppSVGs.add
+          iconTarget! == AppSVGs.add
               ? S.of(context).home_message_goal_add
               : S.of(context).home_message_goal,
           textAlign: TextAlign.center,

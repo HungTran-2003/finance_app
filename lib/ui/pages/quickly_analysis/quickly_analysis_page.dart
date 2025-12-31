@@ -1,33 +1,85 @@
 import 'package:finance_app/generated/l10n.dart';
+import 'package:finance_app/ui/pages/quickly_analysis/quickly_analysis_cubit.dart';
+import 'package:finance_app/ui/pages/quickly_analysis/quickly_analysis_navigator.dart';
 import 'package:finance_app/ui/widgets/app_bar/app_bar.dart';
+import 'package:finance_app/ui/widgets/card/goal_card.dart';
 import 'package:finance_app/ui/widgets/charts/app_financial_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class AnalysisArgument {
+  final String? topExpenseIconPath;
+  final String? topExpenseName;
+  final double? topExpenseAmount;
+  final double? incomeLastWeek;
+
+  AnalysisArgument({
+    this.topExpenseIconPath= '',
+    this.topExpenseName = '',
+    this.topExpenseAmount = 0,
+    this.incomeLastWeek = 0
+  });
+}
 
 class QuicklyAnalysisPage extends StatelessWidget {
-  const QuicklyAnalysisPage({super.key});
+  final AnalysisArgument argument;
+
+  const QuicklyAnalysisPage({super.key, required this.argument});
 
   @override
   Widget build(BuildContext context) {
-    final List<double> incomes = [1400, 2440, 01111, 400, 4300];
-    final label = ["Jan", "Feb", "Mar", "Apr", "May"];
-    final List<double> expenses = [150, 1200, 2150, 2010, 2510];
+    return BlocProvider(
+      create: (context) {
+        return QuicklyAnalysisCubit(navigator: QuicklyAnalysisNavigator(context: context));
+      },
+      child: QuicklyAnalysisChildPage(argument: argument),
+    );
+  }
+}
 
+class QuicklyAnalysisChildPage extends StatefulWidget {
+  final AnalysisArgument argument;
+  const QuicklyAnalysisChildPage({super.key, required this.argument});
+
+  @override
+  State<QuicklyAnalysisChildPage> createState() => _QuicklyAnalysisChildPageState();
+}
+
+class _QuicklyAnalysisChildPageState extends State<QuicklyAnalysisChildPage> {
+  late QuicklyAnalysisCubit _cubit;
+
+  @override
+  void initState() {
+    _cubit = BlocProvider.of<QuicklyAnalysisCubit>(context);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      drawerScrimColor: Colors.transparent,
-      appBar: AppBarWidget(
-        title: S.of(context).account_balance_title,
-        isBack: true,
-        onPressBack: () {
-        },
-        onPressAction: () {
-          print("Notification");
-        },
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(24),
-        alignment: Alignment.center,
-        child: AppFinancialChart(title: "tesst", incomes: incomes, expenses: expenses, label: label),
+      appBar: AppBarWidget(title: "Quick Analysis"),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SizedBox(height: 50,),
+          BlocBuilder<QuicklyAnalysisCubit, QuicklyAnalysisState>(
+            buildWhen: (previous, current) {
+              return previous.currentGoalIndex != current.currentGoalIndex;
+            },
+            builder: (context, state) {
+              return GoalCard(
+                topExpenseIconPath: widget.argument.topExpenseIconPath,
+                topExpenseName: widget.argument.topExpenseName,
+                topExpenseAmount: widget.argument.topExpenseAmount,
+                incomeLastWeek: widget.argument.incomeLastWeek,
+                iconTarget: state.savingGoals[state.currentGoalIndex!].iconPath,
+                targetProgress: state.targetProgress
+              );
+            },
+          )
+        ],
       ),
     );
   }
 }
+
